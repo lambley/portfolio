@@ -15,3 +15,17 @@ body {
   overflow-x: hidden;
   margin: 0;
 }
+
+.light-theme {
+  --background-color: #ffffff;
+  --text-color: #000000;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.dark-theme {
+  --background-color: #000000;
+  --text-color: #ffffff;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}

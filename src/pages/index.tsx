@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const HomePage = (): JSX.Element => {
   return (
-    <Container className="my-4">
+    <Container className="py-4">
       <h1 className="text-center">Hello, it&apos;s me, Aaron</h1>
 
       <div className="d-flex align-items-center flex-column">
