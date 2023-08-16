@@ -6,7 +6,10 @@ function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState("light");
 
   useEffect(() => {
-    if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+    if (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    ) {
       setTheme("dark");
     } else {
       setTheme("light");
@@ -18,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <div className={`${theme}-theme`}>
+    <div className={`${theme}-theme`} style={{ minHeight: "100vh" }}>
       <Layout>
         <button onClick={toggleTheme}>
           {theme === "light" ? "Dark" : "Light"} Mode
