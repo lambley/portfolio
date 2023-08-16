@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import Head from "next/head";
+import "../styles/globals.css";
 import Layout from "../components/Layout";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
@@ -24,18 +25,37 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <div className={`${theme}-theme`} style={{ minHeight: "100vh" }}>
-      <Layout>
-        <button className="theme-toggle" onClick={toggleTheme}>
-          {theme === "light" ? (
-            <FontAwesomeIcon icon={faMoon} />
-          ) : (
-            <FontAwesomeIcon icon={faSun} />
-          )}
-        </button>
-        <Component {...pageProps} />
-      </Layout>
-    </div>
+    <>
+      <Head>
+        <title>Aaron&apos;s Portfolio</title>
+        <meta name="description" content="Aaron's Portfolio" />
+        <link rel="icon" href="/favicon.ico" />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="16x16"
+          href="/favicon-16x16.png"
+        />
+        <link
+          rel="icon"
+          type="image/png"
+          sizes="32x32"
+          href="/favicon-32x32.png"
+        />
+      </Head>
+      <div className={`${theme}-theme`} style={{ minHeight: "100vh" }}>
+        <Layout>
+          <button className="theme-toggle" onClick={toggleTheme}>
+            {theme === "light" ? (
+              <FontAwesomeIcon icon={faMoon} />
+            ) : (
+              <FontAwesomeIcon icon={faSun} />
+            )}
+          </button>
+          <Component {...pageProps} />
+        </Layout>
+      </div>
+    </>
   );
 }
 export default MyApp;
