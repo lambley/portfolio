@@ -1,5 +1,5 @@
 /* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap");
 
 /* Project styles */
 @import "variables.css";
@@ -28,4 +28,9 @@ body {
   --text-color: #ffffff;
   background-color: var(--background-color);
   color: var(--text-color);
+}
+
+.typewriter p {
+  min-height: 1rem;
+  height: 1rem;
 }
