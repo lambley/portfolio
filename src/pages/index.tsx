@@ -1,8 +1,9 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
 
 const HomePage = (): JSX.Element => {
   return (
-    <>
+    <Container className="my-4">
       <h1>Home Page</h1>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
@@ -10,7 +11,7 @@ const HomePage = (): JSX.Element => {
         reprehenderit consequatur quia quae numquam? Quisquam, quia. Quasi
         voluptatibus, quos voluptatem nesciunt quae quia.
       </p>
-    </>
+    </Container>
   );
 };
 

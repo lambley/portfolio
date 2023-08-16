@@ -1,4 +1,8 @@
+/* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap');
+
+/* External styles */
+@import "~bootstrap/dist/css/bootstrap.min.css";
 
 /* Set css variables */
 :root {
@@ -7,7 +11,7 @@
 
 html,
 body {
-  font-family: var(--font-mono);
+  font-family: var(--font-mono) !important;
   max-width: 100vw;
   overflow-x: hidden;
   margin: 0;
