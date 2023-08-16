@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap');
+
+/* Set css variables */
+:root {
+  --font-mono: 'Fira Code', monospace;
+}
+
+html,
+body {
+  font-family: var(--font-mono);
+  max-width: 100vw;
+  overflow-x: hidden;
+  margin: 0;
+}
