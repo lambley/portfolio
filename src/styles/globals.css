@@ -1,13 +1,12 @@
 /* Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;600&display=swap');
 
+/* Project styles */
+@import "variables.css";
+@import "home.css";
+
 /* External styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";
-
-/* Set css variables */
-:root {
-  --font-mono: 'Fira Code', monospace;
-}
 
 html,
 body {
