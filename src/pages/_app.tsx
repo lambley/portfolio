@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Aaron&apos;s Portfolio</title>
         <meta name="description" content="Aaron Lambley - Fullstack Developer - Ruby on Rails, React, Nextjs, Python" />
+        <meta property="og:image" content="/images/ogimage.png" />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"
