@@ -14,7 +14,7 @@ const HomePage = (): JSX.Element => {
       />
 
       <div className="d-flex align-items-center flex-column">
-        <div className="border rounded-circle overflow-hidden me-3 my-3">
+        <div className="border-0 rounded-circle overflow-hidden me-3 my-3">
           <Image
             src="/images/aaron.png"
             alt="Aaron"
