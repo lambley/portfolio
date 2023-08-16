@@ -10,6 +10,7 @@ const HomePage = (): JSX.Element => {
         text={"Hello, it's me, Aaron 👋"}
         delay={100}
         infinite={true}
+        optionalClass={["text-center", "fs-3"]}
       />
 
       <div className="d-flex align-items-center flex-column">

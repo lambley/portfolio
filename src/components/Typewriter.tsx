@@ -4,13 +4,14 @@ type TypewriterProps = {
   text: string;
   delay: number;
   infinite?: boolean;
+  optionalClass?: Array<string> | string;
 };
 
 const Typewriter = (props: TypewriterProps): JSX.Element => {
   const [currentText, setCurrentText] = useState("");
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const { text, delay, infinite } = props;
+  const { text, delay, infinite, optionalClass } = props;
 
   useEffect(() => {
     if (currentIndex < text.length) {
@@ -28,8 +29,12 @@ const Typewriter = (props: TypewriterProps): JSX.Element => {
     }
   }, [currentIndex, delay, text, infinite]);
 
+  const optionalClasses = Array.isArray(optionalClass)
+    ? optionalClass.join(" ")
+    : optionalClass;
+
   return (
-    <div className="typewriter">
+    <div className={`typewriter ${optionalClasses}`}>
       <p>{currentText}</p>
     </div>
   );
