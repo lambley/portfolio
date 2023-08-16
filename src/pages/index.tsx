@@ -6,7 +6,11 @@ import Typewriter from "@/components/Typewriter";
 const HomePage = (): JSX.Element => {
   return (
     <Container className="py-4">
-      <Typewriter text={"Hello, it's me, Aaron 👋"} delay={100} />
+      <Typewriter
+        text={"Hello, it's me, Aaron 👋"}
+        delay={100}
+        infinite={true}
+      />
 
       <div className="d-flex align-items-center flex-column">
         <div className="border rounded-circle overflow-hidden me-3 my-3">
