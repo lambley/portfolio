@@ -1,11 +1,12 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Image from "next/image";
+import Typewriter from "@/components/Typewriter";
 
 const HomePage = (): JSX.Element => {
   return (
     <Container className="py-4">
-      <h1 className="text-center">Hello, it&apos;s me, Aaron</h1>
+      <Typewriter text={"Hello, it's me, Aaron 👋"} delay={100} />
 
       <div className="d-flex align-items-center flex-column">
         <div className="border rounded-circle overflow-hidden me-3 my-3">
