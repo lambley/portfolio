@@ -29,6 +29,14 @@ body {
   position: fixed;
 }
 
+@media (max-width: 767px) {
+  .theme-toggle {
+    font-size: 1rem;
+    top: 4px;
+    right: 4px;
+  }
+}
+
 .light-theme {
   --background-color: #ffffff;
   --text-color: #000000;
