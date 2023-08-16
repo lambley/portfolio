@@ -1,16 +1,44 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
+import Image from "next/image";
 
 const HomePage = (): JSX.Element => {
   return (
     <Container className="my-4">
-      <h1>Home Page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        voluptate, voluptatum, voluptas, dolorum quod quos voluptatem
-        reprehenderit consequatur quia quae numquam? Quisquam, quia. Quasi
-        voluptatibus, quos voluptatem nesciunt quae quia.
-      </p>
+      <h1 className="text-center">Hello, it&apos;s me, Aaron</h1>
+
+      <div className="d-flex align-items-center flex-column">
+        <div className="border rounded-circle overflow-hidden me-3 my-3">
+          <Image
+            src="/images/aaron.png"
+            alt="Aaron"
+            className="round-avatar"
+            width={200}
+            height={200}
+          />
+        </div>
+
+        <div className="border rounded p-3 bio-container">
+          <p className="text-center">
+            <b>
+              Fullstack Developer 💻 | Web-Dev Enthusiast 🌐 | Bookworm 📚 | Dog
+              Lover 🐶
+            </b>
+          </p>
+          <p className="text-center">
+            Experienced Ruby on Rails and JavaScript developer skilled in
+            startup and technical consultancy settings, and well-practiced at
+            working within agile methodology environments.
+          </p>
+          <p className="text-center">
+            Formerly, specialized in non-fiction publishing with a focus on
+            physical and digital sales, including ecommerce and data analytics.
+          </p>
+          <p className="text-center">
+            Currently learning 🌱 Next.js and honing my React skills.
+          </p>
+        </div>
+      </div>
     </Container>
   );
 };
