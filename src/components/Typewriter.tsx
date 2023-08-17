@@ -34,7 +34,7 @@ const Typewriter = (props: TypewriterProps): JSX.Element => {
     : optionalClass;
 
   return (
-    <div className={`typewriter ${optionalClasses}`}>
+    <div className={`typewriter ${optionalClasses}`} aria-label="typing-text">
       <p>{currentText}</p>
     </div>
   );
