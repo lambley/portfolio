@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
+import ThemeToggle from "../components/ThemeToggle";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
@@ -46,13 +47,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <div className={`${theme}-theme`} style={{ minHeight: "100vh" }}>
         <Layout>
-          <button className="theme-toggle" onClick={toggleTheme}>
-            {theme === "light" ? (
-              <FontAwesomeIcon icon={faMoon} />
-            ) : (
-              <FontAwesomeIcon icon={faSun} />
-            )}
-          </button>
+          <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <Component {...pageProps} />
         </Layout>
       </div>
