@@ -1,15 +1,25 @@
 const config = {
   verbose: true,
-  preset: 'ts-jest',
-  testEnvironment: 'jsdom',
-  setupFilesAfterEnv: [
-    "<rootDir>/src/setupTests.ts"
- ],
+  preset: "ts-jest",
+  testEnvironment: "jsdom",
+  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
   transform: {
-    '^.+\\.ts?$': 'ts-jest',
-    '^.+\\.tsx?$': 'ts-jest',
-    '^.+\\.js?$': 'babel-jest',
-    '^.+\\.jsx?$': 'babel-jest'
+    "^.+\\.ts?$": [
+      "ts-jest",
+      {
+        babel: true,
+        tsConfig: "tsconfig.jest.json",
+      },
+    ],
+    "^.+\\.tsx?$": [
+      "ts-jest",
+      {
+        babel: true,
+        tsConfig: "tsconfig.jest.json",
+      },
+    ],
+    "^.+\\.js?$": "babel-jest",
+    "^.+\\.jsx?$": "babel-jest",
   },
 };
 
