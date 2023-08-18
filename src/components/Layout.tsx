@@ -3,9 +3,11 @@ import Navigation from "./Navigation";
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
-    <Navigation>
-      <div>{children}</div>
-    </Navigation>
+    <div className="layout-wrapper">
+      <Navigation>
+        <div className="content-container">{children}</div>
+      </Navigation>
+    </div>
   );
 };
 

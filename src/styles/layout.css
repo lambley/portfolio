@@ -1,0 +1,7 @@
+.layout-wrapper {
+  position: relative;
+}
+
+.content-container {
+  padding-top: calc(var(--page-margin-top) + 20px);
+}
