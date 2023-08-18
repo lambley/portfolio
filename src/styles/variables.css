@@ -2,6 +2,8 @@
 :root {
   --background-color: #ffffff;
   --text-color: #000000;
+  --button-background-color: #000000;
+  --button-text-color: #ffffff;
   --font-mono: 'Fira Code', monospace;
   --navbar-height: 60px;
   --page-margin-top: var(--navbar-height);
@@ -12,6 +14,8 @@
   :root {
     --background-color: #000000;
     --text-color: #ffffff;
+    --button-background-color: #ffffff;
+    --button-text-color: #000000;
     --font-mono: 'Fira Code', monospace;
   }
 }
