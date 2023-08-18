@@ -42,6 +42,6 @@ describe("Navigation", () => {
 
     expect(homeLink.getAttribute("href")).toBe("/");
     expect(blogLink.getAttribute("href")).toBe("/");
-    expect(portfolioLink.getAttribute("href")).toBe("/");
+    expect(portfolioLink.getAttribute("href")).toBe("/portfolio");
   });
 });
