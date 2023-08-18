@@ -2,7 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
-import PortfolioList from "@/components/PortfolioList";
+import Link from "next/link";
 
 const HomePage = (): JSX.Element => {
   return (
@@ -46,7 +46,9 @@ const HomePage = (): JSX.Element => {
           </p>
         </div>
       </div>
-      <PortfolioList />
+      <h3 className="text-center my-3">
+        Check out some of my work <Link href={"/portfolio"}>here</Link>
+      </h3>
     </Container>
   );
 };
