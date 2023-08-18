@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Portfolio: React.FC = () => {
   const portfolioSampleData = [
@@ -11,18 +12,29 @@ const Portfolio: React.FC = () => {
     { portfolioId: "6", portfolioName: "Portfolio 6" },
   ];
 
+  const renderPortfolioList = () => {
+    return portfolioSampleData.map((portfolio) => (
+      <div className="portfolio-item" key={portfolio.portfolioId}>
+        <Link
+          className="portfolio-link"
+          href={`/portfolio/${portfolio.portfolioId}`}
+        >
+          {portfolio.portfolioName}
+          <Image
+            src="https://placehold.co/300x200/png"
+            alt=""
+            width={300}
+            height={200}
+          />
+        </Link>
+      </div>
+    ));
+  };
+
   return (
     <div className="container text-center">
       <h1>Portfolio List</h1>
-      <div className="portfolio-list">
-        {portfolioSampleData.map((portfolio) => (
-          <div key={portfolio.portfolioId}>
-            <Link href={`/portfolio/${portfolio.portfolioId}`}>
-              {portfolio.portfolioName}
-            </Link>
-          </div>
-        ))}
-      </div>
+      <div className="portfolio-list">{renderPortfolioList()}</div>
     </div>
   );
 };
