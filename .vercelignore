@@ -3,3 +3,4 @@
 **/*.test.js
 **/*.test.jsx
 **/setupTest.ts
+**/*.md
