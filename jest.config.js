@@ -8,18 +8,22 @@ const config = {
       "ts-jest",
       {
         babel: true,
-        tsConfig: "tsconfig.jest.json",
+        tsConfig: "<rootDir>/tsconfig.jest.json",
       },
     ],
     "^.+\\.tsx?$": [
       "ts-jest",
       {
         babel: true,
-        tsConfig: "tsconfig.jest.json",
+        tsConfig: "<rootDir>/tsconfig.jest.json",
       },
     ],
     "^.+\\.js?$": "babel-jest",
     "^.+\\.jsx?$": "babel-jest",
+  },
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "^@utils/(.*)$": "<rootDir>/src/utils/$1",
   },
 };
 

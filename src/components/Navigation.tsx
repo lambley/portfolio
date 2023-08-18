@@ -20,7 +20,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <Link className="navbar-link" href="/">
             Blog
           </Link>
-          <Link className="navbar-link" href="/">
+          <Link className="navbar-link" href="/portfolio">
             Portfolio
           </Link>
         </div>

@@ -1,0 +1,48 @@
+.portfolio-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.portfolio-item {
+  border: 1px solid;
+  padding: 16px;
+  margin: 8px;
+  border-radius: 4px;
+}
+
+.portfolio-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.portfolio-link {
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.portfolio-image {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-top: 8px;
+}
+
+.portfolio-description {
+  margin-top: 8px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.portfolio-back-button {
+  border-radius: 4px;
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  left: 36px;
+  position: fixed;
+}
