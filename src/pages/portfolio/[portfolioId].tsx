@@ -6,7 +6,8 @@ const PortfolioItem: React.FC = () => {
   const { portfolioId } = router.query;
 
   return (
-    <div className="container my-3 text-center">
+    <div className="container text-center">
+      <button>Back</button>
       <h1>Portfolio Item</h1>
       <p>Portfolio ID: {portfolioId}</p>
     </div>
