@@ -3,6 +3,8 @@
   --background-color: #ffffff;
   --text-color: #000000;
   --font-mono: 'Fira Code', monospace;
+  --navbar-height: 60px;
+  --page-margin-top: var(--navbar-height);
 }
 
 /* Dark theme */

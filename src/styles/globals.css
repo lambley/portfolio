@@ -6,6 +6,7 @@
 @import "home.css";
 @import "navigation.css";
 @import "portfolio.css";
+@import "layout.css";
 
 /* External styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";

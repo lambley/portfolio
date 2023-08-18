@@ -1,0 +1,8 @@
+.layout-wrapper {
+  position: relative;
+  min-height: 100vh;
+}
+
+.content-container {
+  padding-top: calc(var(--page-margin-top) + 20px);
+}
