@@ -4,8 +4,6 @@ import Head from "next/head";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import ThemeToggle from "../components/ThemeToggle";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState("light");
@@ -45,7 +43,7 @@ function MyApp({ Component, pageProps }: AppProps) {
           href="/favicon-32x32.png"
         />
       </Head>
-      <div className={`${theme}-theme`} style={{ minHeight: "100vh" }}>
+      <div className={`${theme}-theme`}>
         <Layout>
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <Component {...pageProps} />
