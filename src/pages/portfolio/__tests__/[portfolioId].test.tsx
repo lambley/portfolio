@@ -7,7 +7,7 @@ jest.mock("next/router", () => ({
   useRouter: () => mockUseRouter(),
 }));
 
-describe("wPortfolioItem", () => {
+describe("PortfolioItem", () => {
   it("renders the portfolio item page", () => {
     const router = mockUseRouter({ query: { portfolioId: "123" } });
     render(<PortfolioItem />);
