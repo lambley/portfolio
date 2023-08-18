@@ -12,9 +12,8 @@ const Portfolio: React.FC = () => {
   ];
 
   return (
-    <div className="container my-3 text-center">
+    <div className="container text-center">
       <h1>Portfolio List</h1>
-      <i>Project list coming soon</i>
       <div className="portfolio-list">
         {portfolioSampleData.map((portfolio) => (
           <div key={portfolio.portfolioId}>
