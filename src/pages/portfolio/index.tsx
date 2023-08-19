@@ -3,20 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import prisma from "../../../lib/prisma";
 import { GetStaticProps } from "next";
+import { PortfolioType } from "../../../custom";
 
 interface PortfolioProps {
   feed: any;
-}
-
-type PortfolioType = {
-  id: number;
-  title: string;
-  description: string;
-  url?: string;
-  repoUrl?: string;
-  image: string;
-  category: string[];
-  date: string;
 }
 
 const Portfolio: React.FC<PortfolioProps> = (props) => {
