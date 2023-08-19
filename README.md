@@ -9,7 +9,8 @@
   - React.
 - Testing with Jest and React Testing Library.
 - Storage Vercel Postgres DB, with Prisma ORM. (note to self - need env file with DB connection string for local dev)
-
+  - DB schema is in `prisma/schema.prisma`
+  - DB migrations are in `prisma/migrations`
 ### Hosting
 Deployed on Vercel at https://www.agslambley.dev
 
