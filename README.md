@@ -3,8 +3,12 @@
 ## Description
 
 ### Technologies
-Made with Next.js, Bootstrap, and React.
-Testing with Jest and React Testing Library.
+- Made with
+  - Next.js,
+  - Bootstrap,
+  - React.
+- Testing with Jest and React Testing Library.
+- Storage Vercel Postgres DB, with Prisma ORM. (note to self - need env.local file with DB connection string for local dev)
 
 ### Hosting
 Deployed on Vercel at https://www.agslambley.dev
