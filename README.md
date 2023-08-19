@@ -1,6 +1,7 @@
 # My Porfolio
 
 ## Description
+This is my portfolio website. It is a Next.js app, deployed on Vercel.
 
 ### Technologies
 - Made with
