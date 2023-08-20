@@ -15,8 +15,8 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
 
   const renderPortfolioList = () => {
     return feed.map((portfolio: PortfolioType) => (
-      <div className="portfolio-item" key={portfolio.id}>
-        <Link className="portfolio-link" href={`/portfolio/${portfolio.id}`}>
+      <div className="portfolio-item" key={portfolio.id} aria-label="portfolio-item">
+        <Link className="portfolio-link" href={`/portfolio/${portfolio.id}`} aria-label="portfolio-item-link">
           <div className="portfolio-title">{toTitleCase(portfolio.title)}</div>
           <Image
             src={
