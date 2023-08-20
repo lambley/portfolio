@@ -13,23 +13,21 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
   const { feed } = props;
 
   const renderPortfolioList = () => {
-    return feed.map((portfolio:PortfolioType) => (
+    return feed.map((portfolio: PortfolioType) => (
       <div className="portfolio-item" key={portfolio.id}>
-        <Link
-          className="portfolio-link"
-          href={`/portfolio/${portfolio.id}`}
-        >
+        <Link className="portfolio-link" href={`/portfolio/${portfolio.id}`}>
           <div className="portfolio-title">{portfolio.title}</div>
           <Image
-            src="https://placehold.co/300x200/png"
+            src={
+              `/images/${portfolio.image}.png` ||
+              "https://placehold.co/300x200/png"
+            }
             alt=""
             className="portfolio-image"
             width={300}
             height={200}
           />
-          <div className="portfolio-description">
-            {portfolio.description}
-          </div>
+          <div className="portfolio-description">{portfolio.description}</div>
         </Link>
       </div>
     ));
