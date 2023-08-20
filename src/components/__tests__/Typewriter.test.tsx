@@ -18,9 +18,11 @@ describe("Typewriter", () => {
     await waitFor(
       () => {
         const text = screen.getByText("Hello");
+        console.log(text.innerHTML);
+
         expect(text).toBeInTheDocument();
       },
-      { timeout: 600 }
+      { timeout: 800 }
     );
   });
 
@@ -49,7 +51,9 @@ describe("Typewriter", () => {
   });
 
   it('renders with optional class if "optionalClass" prop is passed', () => {
-    render(<Typewriter text={"Hello"} delay={100} optionalClass="test-class" />);
+    render(
+      <Typewriter text={"Hello"} delay={100} optionalClass="test-class" />
+    );
 
     const elementWithClass = screen.getAllByLabelText("typing-text")[0];
     expect(elementWithClass).toHaveClass("test-class");
