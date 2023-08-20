@@ -36,7 +36,9 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
       <h1>{toTitleCase(title)}</h1>
       <h3>{toSentenceCase(description)}</h3>
       <Image
-        src="https://placehold.co/300x200/png"
+        src={
+          `/images/${portfolio.image}.png` || "https://placehold.co/300x200/png"
+        }
         alt=""
         className="portfolio-image"
         width={300}
