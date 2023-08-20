@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import prisma from "../../../lib/prisma";
-import { GetServerSideProps } from "next";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 import { PortfolioType } from "../../../custom";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
@@ -13,8 +13,11 @@ interface PortfolioItemProps {
 }
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
-  const { id, title, description, url, repoUrl, image, categories, date } =
+  const { id, title, description, image, categories, date } =
     portfolio;
+
+  const url = portfolio.url || "Not Found";
+  const repoUrl = portfolio.repoUrl || "Not Found";
 
   const router = useRouter();
 
@@ -41,8 +44,12 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
         height={200}
         style={{ objectFit: "cover", width: "300px" }}
       />
-      <p>url: <a href={url}>{url}</a></p>
-      <p>repo: <a href={repoUrl}>{repoUrl}</a></p>
+      <p>
+        url: <a href={url}>{url}</a>
+      </p>
+      <p>
+        repo: <a href={repoUrl}>{repoUrl}</a>
+      </p>
       <p>Categories:</p>
       {categories.map((cat, index) => (
         <p key={index}>{toSentenceCase(cat)}</p>
@@ -54,32 +61,46 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
 
 export default PortfolioItem;
 
-export const getServerSideProps: GetServerSideProps<PortfolioType> = async (
+export const getStaticProps: GetStaticProps<PortfolioItemProps> = async (
   context
 ) => {
-  const portfolioId = context.query.portfolioId as string;
+  const portfolioId = context.params?.portfolioId as string;
 
-  const notFoundPortfolio = {
+  const notFoundPortfolio: PortfolioType = {
     id: 0,
     title: "Not Found",
     description: "Not Found",
-    image: "Not Found",
     url: "Not Found",
+    repoUrl: "Not Found",
+    image: "Not Found",
+    categories: ["Not Found"],
+    date: "Not Found",
   };
 
   try {
     const portfolio = await prisma.portfolio.findUnique({
-      where: { id: parseInt(portfolioId) },
+      where: { id: parseInt(portfolioId, 10) },
     });
-    return {
-      props: {
-        portfolio: portfolio || notFoundPortfolio,
-      },
-    };
+
+    if (portfolio) {
+      return {
+        props: {
+          portfolio,
+        },
+      };
+    } else {
+      return {
+        props: {
+          portfolio: notFoundPortfolio,
+        },
+      };
+    }
   } catch (error) {
     console.error(error);
     return {
-      props: {},
+      props: {
+        portfolio: notFoundPortfolio,
+      },
     };
   }
 };
