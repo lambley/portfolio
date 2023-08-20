@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import prisma from "../../../lib/prisma";
-import { GetStaticProps } from "next";
+import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
 import { PortfolioType } from "../../../custom";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
@@ -13,8 +13,7 @@ interface PortfolioItemProps {
 }
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
-  const { id, title, description, image, categories, date } =
-    portfolio;
+  const { id, title, description, image, categories, date } = portfolio;
 
   const url = portfolio.url || "Not Found";
   const repoUrl = portfolio.repoUrl || "Not Found";
@@ -61,6 +60,18 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
 
 export default PortfolioItem;
 
+// fetch all possible paths for a single portfolio item
+// for static generation of pages
+export const getStaticPaths: GetStaticPaths = async () => {
+  const portfolios = await prisma.portfolio.findMany();
+  const paths = portfolios.map((portfolio) => ({
+    params: { portfolioId: portfolio.id.toString() },
+  }));
+
+  return { paths, fallback: false };
+};
+
+// fetch data for a single portfolio item
 export const getStaticProps: GetStaticProps<PortfolioItemProps> = async (
   context
 ) => {
