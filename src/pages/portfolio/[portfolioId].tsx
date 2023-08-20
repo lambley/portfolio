@@ -4,7 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import prisma from "../../../lib/prisma";
 import { GetServerSideProps } from "next";
+import Image from "next/image";
 import { PortfolioType } from "../../../custom";
+import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 
 interface PortfolioItemProps {
   portfolio: PortfolioType;
@@ -29,14 +31,21 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
       >
         <FontAwesomeIcon icon={faCaretLeft} /> Back
       </button>
-      <h1>{title}</h1>
-      <p>{description}</p>
-      <p>url: {url}</p>
-      <p>repo: {repoUrl}</p>
-      <p>image: {image}</p>
+      <h1>{toTitleCase(title)}</h1>
+      <h3>{toSentenceCase(description)}</h3>
+      <Image
+        src="https://placehold.co/300x200/png"
+        alt=""
+        className="portfolio-image"
+        width={300}
+        height={200}
+        style={{ objectFit: "cover", width: "300px" }}
+      />
+      <p>url: <a href={url}>{url}</a></p>
+      <p>repo: <a href={repoUrl}>{repoUrl}</a></p>
       <p>Categories:</p>
       {categories.map((cat, index) => (
-        <p key={index}>{cat}</p>
+        <p key={index}>{toSentenceCase(cat)}</p>
       ))}
       <p>date: {date}</p>
     </div>
