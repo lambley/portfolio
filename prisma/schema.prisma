@@ -13,7 +13,7 @@ model Portfolio {
   id Int @id @default(autoincrement())
   title String @default("") @db.VarChar(50)
   description String @default("") @db.VarChar(100)
-  url String? @unique
+  url String?
   repoUrl String? @unique
   image String @default("")
   categories String[] @default([])
