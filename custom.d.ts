@@ -11,7 +11,7 @@ type PortfolioType = {
   url?: string;
   repoUrl?: string;
   image: string;
-  category: string[];
+  categories: string[];
   date: string;
 }
 
