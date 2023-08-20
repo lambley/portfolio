@@ -23,7 +23,7 @@ describe("Portfolio", () => {
       repoUrl: "test repo url 2",
       categories: ["test category 2"],
       date: "test date 2",
-    }
+    },
   ];
 
   it("renders the portfolio page", () => {
@@ -33,6 +33,22 @@ describe("Portfolio", () => {
     expect(portfolioHeader).toBeInTheDocument();
   });
 
-  // add test for displaying portfolio items
-  // add test for routing to portfolio item
+  it("renders the portfolio list", () => {
+    render(<Portfolio feed={mockPortfolio} />);
+    const portfolioItems = screen.getAllByLabelText("portfolio-item");
+
+    expect(portfolioItems).toHaveLength(2);
+  });
+
+  it("renders the portfolio item with the correct dynamic link", () => {
+    render(<Portfolio feed={mockPortfolio} />);
+    const portfolioItemLink = screen.getAllByLabelText("portfolio-item-link");
+
+    portfolioItemLink.forEach((link, index) => {
+      expect(link).toHaveAttribute(
+        "href",
+        `/portfolio/${mockPortfolio[index].id}`
+      );
+    });
+  });
 });
