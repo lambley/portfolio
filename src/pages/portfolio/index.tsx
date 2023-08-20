@@ -4,6 +4,7 @@ import Image from "next/image";
 import prisma from "../../../lib/prisma";
 import { GetStaticProps } from "next";
 import { PortfolioType } from "../../../custom";
+import { toTitleCase } from "@/utils/stringUtils";
 
 interface PortfolioProps {
   feed: any;
@@ -16,7 +17,7 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
     return feed.map((portfolio: PortfolioType) => (
       <div className="portfolio-item" key={portfolio.id}>
         <Link className="portfolio-link" href={`/portfolio/${portfolio.id}`}>
-          <div className="portfolio-title">{portfolio.title}</div>
+          <div className="portfolio-title">{toTitleCase(portfolio.title)}</div>
           <Image
             src={
               `/images/${portfolio.image}.png` ||
@@ -27,7 +28,7 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
             width={300}
             height={200}
           />
-          <div className="portfolio-description">{portfolio.description}</div>
+          <div className="portfolio-description">{toTitleCase(portfolio.description)}</div>
         </Link>
       </div>
     ));
