@@ -23,7 +23,12 @@
       "@/*": ["./src/*"],
       "@utils/*": ["./src/utils/*"]
     },
-    "types": ["node", "jest", "@testing-library/jest-dom"]
+    "types": [
+      "node",
+      "jest",
+      "@testing-library/jest-dom",
+      "@testing-library/jest-dom/extend-expect"
+    ]
   },
   "include": [
     "next-env.d.ts",
