@@ -59,3 +59,19 @@
   margin-right: auto;
   margin-left: auto;
 }
+
+.portfolio-details-categories-list {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.portfolio-detail-category {
+  background-color: var(--button-background-color);
+  color: var(--button-text-color);
+  padding: 4px 8px;
+  border-radius: 4px;
+}
