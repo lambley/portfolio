@@ -31,6 +31,9 @@
   height: auto;
   border-radius: 4px;
   margin-top: 8px;
+  border-color: var(--button-background-color);
+  border-width: 1px;
+  border-style: solid;
 }
 
 .portfolio-description {

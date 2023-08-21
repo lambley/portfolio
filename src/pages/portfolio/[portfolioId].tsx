@@ -46,7 +46,6 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
         style={{
           objectFit: "cover",
           width: "300px",
-          border: "1px solid white",
         }}
       />
       <p>
