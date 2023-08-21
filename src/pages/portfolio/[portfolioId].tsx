@@ -43,7 +43,11 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
         className="portfolio-image"
         width={300}
         height={200}
-        style={{ objectFit: "cover", width: "300px" }}
+        style={{
+          objectFit: "cover",
+          width: "300px",
+          border: "1px solid white"
+        }}
       />
       <p>
         url: <a href={url}>{url}</a>
