@@ -46,7 +46,6 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
         style={{
           objectFit: "cover",
           width: "300px",
-          border: "1px solid white"
         }}
       />
       <p>
@@ -56,9 +55,13 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
         repo: <a href={repoUrl}>{repoUrl}</a>
       </p>
       <p>Categories:</p>
-      {categories.map((cat, index) => (
-        <p key={index}>{toSentenceCase(cat)}</p>
-      ))}
+      <div className="portfolio-details-categories-list">
+        {categories.map((cat, index) => (
+          <p key={index} className="portfolio-detail-category">
+            {toSentenceCase(cat)}
+          </p>
+        ))}
+      </div>
       <p>date: {date}</p>
     </div>
   );
