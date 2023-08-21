@@ -33,8 +33,8 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
       >
         <FontAwesomeIcon icon={faCaretLeft} /> Back
       </button>
-      <h1>{toTitleCase(title)}</h1>
-      <h3>{toSentenceCase(description)}</h3>
+      <h1 className="portfolio-detail-title">{toTitleCase(title)}</h1>
+      <h4>{toSentenceCase(description)}</h4>
       <Image
         src={
           `/images/${portfolio.image}.png` || "https://placehold.co/300x200/png"
@@ -43,7 +43,11 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
         className="portfolio-image"
         width={300}
         height={200}
-        style={{ objectFit: "cover", width: "300px" }}
+        style={{
+          objectFit: "cover",
+          width: "300px",
+          border: "1px solid white"
+        }}
       />
       <p>
         url: <a href={url}>{url}</a>
