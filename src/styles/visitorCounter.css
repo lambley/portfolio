@@ -1,6 +1,5 @@
 .visitor-counter {
   font-family: "Courier New", monospace;
-  padding: 1rem;
   background-color: var(--button-background-color);
   color: var(--button-text-color);
   border-radius: 8px;
@@ -9,6 +8,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  padding: 8px 0px;
 }
 
 .counter-wrapper {
@@ -16,8 +16,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 4px;
-  padding: 0.5rem 1rem;
   margin-bottom: 0px;
+  padding: 0px 8px;
 }
 
 .counter-digits {
