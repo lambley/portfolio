@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
 import Link from "next/link";
+import VisitorCounter from "@/components/VisitorCounter";
 
 const HomePage = (): JSX.Element => {
   const [visitorCount, setVisitorCount] = useState(0);
@@ -56,18 +57,15 @@ const HomePage = (): JSX.Element => {
             physical and digital sales, including ecommerce and data analytics.
           </p>
           <p className="text-center">
-            Currently learning 🌱 Next.js framework, and CI/CD with GitHub actions and Vercel.
+            Currently learning 🌱 Next.js framework, and CI/CD with GitHub
+            actions and Vercel.
           </p>
         </div>
       </div>
       <h3 className="text-center my-3">
         Check out some of my work <Link href={"/portfolio"}>here</Link>
       </h3>
-      <div className="visitor-counter">
-        <p className="text-center">
-          <b>Visitor Count:</b> {visitorCount}
-        </p>
-      </div>
+      <VisitorCounter />
     </Container>
   );
 };
