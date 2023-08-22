@@ -47,3 +47,21 @@
   border-right: 1px solid #69696980;
   margin-right: 4px;
 }
+
+@media screen and (max-width: 767px) {
+  .visitor-counter {
+    width: 80%;
+  }
+  .counter-digits, .counter-label {
+    font-size: 0.8rem;
+  }
+  .counter-wrapper {
+    padding: 0px 4px;
+  }
+  .digit-frame {
+    padding: 0px 2px;
+  }
+  .digit-frame:last-of-type {
+    margin-right: 2px;
+  }
+}

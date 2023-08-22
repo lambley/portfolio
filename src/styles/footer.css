@@ -31,3 +31,16 @@
   margin-bottom: 0px;
   color: var(--text-color);
 }
+
+@media screen and (max-width: 767px) {
+  .footer {
+    padding: 0.5rem;
+
+  }
+  .footer-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
