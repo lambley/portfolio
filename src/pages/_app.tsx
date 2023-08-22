@@ -4,6 +4,7 @@ import Head from "next/head";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import ThemeToggle from "../components/ThemeToggle";
+import { Analytics } from '@vercel/analytics/react';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState("light");
@@ -24,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <>
+    <html lang="en">
       <Head>
         <title>Aaron&apos;s Portfolio</title>
         <meta name="description" content="Aaron Lambley - Fullstack Developer - Ruby on Rails, React, Nextjs, Python" />
@@ -48,8 +49,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <Component {...pageProps} />
         </Layout>
+        <Analytics />
       </div>
-    </>
+    </html>
   );
 }
 export default MyApp;
