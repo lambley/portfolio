@@ -2,17 +2,15 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 let visitorCount = 0;
 
+// if the user has a cookie, they've already visited the site
+// if they don't have a cookie, increment the visitor count and set a cookie
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  switch (req.method) {
-    case "GET":
-      res.status(200).json({ visitorCount });
-      break;
-    case "POST":
-      visitorCount++;
-      res.status(200).json({ visitorCount });
-      break;
-    default:
-      res.setHeader("Allow", ["GET", "POST"]);
-      res.status(405).end(`Method ${req.method} Not Allowed`);
+  const uniqueVisitorCookie = req.cookies["unique_visitor"];
+
+  if (!uniqueVisitorCookie) {
+    visitorCount++;
+    res.setHeader("Set-Cookie", "unique_visitor=true; Max-Age=86400"); // 24 hour expiry
   }
+
+  res.status(200).json({ visitorCount });
 }

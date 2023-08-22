@@ -9,7 +9,10 @@ const HomePage = (): JSX.Element => {
 
   useEffect(() => {
     async function getVisitorCount() {
-      const res = await fetch("/api/visitorCounter", { method: "POST" });
+      const res = await fetch("/api/visitorCounter", {
+        method: "POST",
+        headers: { Cookie: document.cookie },
+      });
       const data = await res.json();
       setVisitorCount(data.visitorCount);
     }
