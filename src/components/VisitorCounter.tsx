@@ -1,27 +1,29 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const VisitorCounter = (): JSX.Element => {
   const [visitorCount, setVisitorCount] = useState(0);
 
   useEffect(() => {
     async function getVisitorCount() {
-      const res = await fetch("/api/visitorCount", {
-        method: "POST",
-        headers: { Cookie: document.cookie },
-      });
-      const data = await res.json();
-      setVisitorCount(data.visitorCount);
+      try {
+        const response = await axios.post("/api/visitorCount");
+        setVisitorCount(response.data.visitorCount);
+      } catch (error) {
+        console.error(error);
+        setVisitorCount(0);
+      }
     }
     getVisitorCount();
   }, []);
 
   return (
     <div className="visitor-counter text-center">
-    <div className="counter-wrapper">
-      <span className="counter-digits">{visitorCount}</span>
+      <div className="counter-wrapper">
+        <span className="counter-digits">{visitorCount}</span>
+      </div>
+      <p className="counter-label">Unique Visitors</p>
     </div>
-    <p className="counter-label">Unique Visitors</p>
-  </div>
   );
 };
 
