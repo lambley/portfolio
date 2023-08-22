@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
 import Link from "next/link";
+import VisitorCounter from "@/components/VisitorCounter";
 
 const HomePage = (): JSX.Element => {
+  const [visitorCount, setVisitorCount] = useState(0);
+
+  useEffect(() => {
+    async function getVisitorCount() {
+      const res = await fetch("/api/visitorCount", {
+        method: "POST",
+        headers: { Cookie: document.cookie },
+      });
+      const data = await res.json();
+      setVisitorCount(data.visitorCount);
+    }
+    getVisitorCount();
+  }, []);
+
   return (
     <Container className="py-4">
       <Typewriter
@@ -42,7 +57,8 @@ const HomePage = (): JSX.Element => {
             physical and digital sales, including ecommerce and data analytics.
           </p>
           <p className="text-center">
-            Currently learning 🌱 Next.js and honing my React skills.
+            Currently learning 🌱 Next.js framework, and CI/CD with GitHub
+            actions and Vercel.
           </p>
         </div>
       </div>

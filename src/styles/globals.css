@@ -7,6 +7,8 @@
 @import "navigation.css";
 @import "portfolio.css";
 @import "layout.css";
+@import "visitorCounter.css";
+@import "footer.css";
 
 /* External styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";
@@ -36,7 +38,7 @@ body {
 @media (max-width: 767px) {
   .theme-toggle {
     font-size: 1rem;
-    top: 4px;
+    top: 64px;
     right: 4px;
   }
 }
