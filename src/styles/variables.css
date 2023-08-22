@@ -6,6 +6,7 @@
   --button-text-color: #ffffff;
   --font-mono: "Fira Code", monospace;
   --navbar-height: 60px;
+  --footer-height: 60px;
   --page-margin-top: var(--navbar-height);
   --hover-shadow: 1px 1px 4px 1px var(--button-background-color);
 }

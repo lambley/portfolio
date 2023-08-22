@@ -8,6 +8,7 @@
 @import "portfolio.css";
 @import "layout.css";
 @import "visitorCounter.css";
+@import "footer.css";
 
 /* External styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";

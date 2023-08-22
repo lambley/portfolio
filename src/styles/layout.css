@@ -5,4 +5,5 @@
 
 .content-container {
   padding-top: calc(var(--page-margin-top) + 20px);
+  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
 }

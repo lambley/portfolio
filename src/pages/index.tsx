@@ -65,7 +65,6 @@ const HomePage = (): JSX.Element => {
       <h3 className="text-center my-3">
         Check out some of my work <Link href={"/portfolio"}>here</Link>
       </h3>
-      <VisitorCounter />
     </Container>
   );
 };
