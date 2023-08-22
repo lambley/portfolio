@@ -26,7 +26,6 @@ describe("visitorCount", () => {
     // check the 3rd response
     expect(res.json.mock.calls[2][0]).toEqual({ visitorCount: 3 });
     expect(res.status).toHaveBeenCalledWith(200);
-    console.log(res.json.mock.calls);
   });
 
   it("should not increment the visitor count if the user has a cookie", () => {
@@ -36,7 +35,6 @@ describe("visitorCount", () => {
     // check the 4th response
     expect(res.json.mock.calls[3][0]).toEqual({ visitorCount: 3 });
     expect(res.status).toHaveBeenCalledWith(200);
-    console.log(res.json.mock.calls);
   });
 
   it("should calculate the visitor count correctly", () => {
@@ -51,7 +49,6 @@ describe("visitorCount", () => {
     // check the 10th response
     expect(res.json.mock.calls[9][0]).toEqual({ visitorCount: 7 });
     expect(res.status).toHaveBeenCalledWith(200);
-    console.log(res.json.mock.calls);
   });
 
   it("should set a cookie if the user doesn't have one", () => {
