@@ -5,7 +5,7 @@ const VisitorCounter = (): JSX.Element => {
 
   useEffect(() => {
     async function getVisitorCount() {
-      const res = await fetch("/api/visitorCounter", {
+      const res = await fetch("/api/visitorCount", {
         method: "POST",
         headers: { Cookie: document.cookie },
       });
