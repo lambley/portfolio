@@ -12,6 +12,8 @@ This is my portfolio website. It is a Next.js app, deployed on Vercel.
 - Storage Vercel Postgres DB, with Prisma ORM. (note to self - need env file with DB connection string for local dev)
   - DB schema is in `prisma/schema.prisma`
   - DB migrations are in `prisma/migrations`
+
+Experimented with [`serverless functions`](https://vercel.com/docs/functions/serverless-functions) e.g. simple unique visitors counter
  
 ### Hosting
 Deployed on Vercel at https://www.agslambley.dev
