@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   };
 
   return (
-    <html lang="en">
+    <>
       <Head>
         <title>Aaron&apos;s Portfolio</title>
         <meta name="description" content="Aaron Lambley - Fullstack Developer - Ruby on Rails, React, Nextjs, Python" />
@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Layout>
         <Analytics />
       </div>
-    </html>
+    </>
   );
 }
 export default MyApp;

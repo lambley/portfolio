@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
 import Link from "next/link";
 
 const HomePage = (): JSX.Element => {
+  const [visitorCount, setVisitorCount] = useState(0);
+
+  useEffect(() => {
+    async function getVisitorCount() {
+      const res = await fetch("/api/visitorCounter", { method: "POST" });
+      const data = await res.json();
+      setVisitorCount(data.visitorCount);
+    }
+    getVisitorCount();
+  }, []);
+
   return (
     <Container className="py-4">
       <Typewriter
@@ -49,6 +60,11 @@ const HomePage = (): JSX.Element => {
       <h3 className="text-center my-3">
         Check out some of my work <Link href={"/portfolio"}>here</Link>
       </h3>
+      <div className="visitor-counter">
+        <p className="text-center">
+          <b>Visitor Count:</b> {visitorCount}
+        </p>
+      </div>
     </Container>
   );
 };
