@@ -56,7 +56,7 @@ const HomePage = (): JSX.Element => {
             physical and digital sales, including ecommerce and data analytics.
           </p>
           <p className="text-center">
-            Currently learning 🌱 Next.js and honing my React skills.
+            Currently learning 🌱 Next.js framework, and CI/CD with GitHub actions and Vercel.
           </p>
         </div>
       </div>
