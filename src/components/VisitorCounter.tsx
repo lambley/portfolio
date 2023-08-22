@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import DigitFrame from "./digitFrame";
 
 const VisitorCounter = (): JSX.Element => {
   const [visitorCount, setVisitorCount] = useState(0);
@@ -24,11 +25,15 @@ const VisitorCounter = (): JSX.Element => {
     getVisitorCount();
   }, []);
 
+  const digitArray = visitorCount.toString().split("").map(Number);
+
   return (
     <div className="visitor-counter text-center">
-      <div className="counter-wrapper">
-        <span className="counter-digits">{visitorCount}</span>
-      </div>
+      {digitArray.map((digit, index) => (
+        <DigitFrame key={index}>
+          <span className="counter-digits">{digit}</span>
+        </DigitFrame>
+      ))}
       <p className="counter-label">Unique Visitors</p>
     </div>
   );
