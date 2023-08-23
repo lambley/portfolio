@@ -17,7 +17,7 @@ const Navigation: React.FC<NavigationProps> = ({
           </Link>
         </div>
         <div className="navbar-right">
-          <Link className="navbar-link" href="/">
+          <Link className="navbar-link" href="/blog">
             Blog
           </Link>
           <Link className="navbar-link" href="/portfolio">
