@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import apiUrl from "@/utils/apiConfig";
 import Link from "next/link";
 import Image from "next/image";
 import { GetStaticProps } from "next";
@@ -55,7 +56,7 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
 export default Portfolio;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = await axios.get("http://localhost:4000/api/v1/portfolios");
+  const feed = await axios.get(`${apiUrl}/api/v1/portfolios`);
   return {
     props: {
       feed: feed.data,

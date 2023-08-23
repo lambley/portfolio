@@ -1,4 +1,5 @@
 import axios from "axios";
+import apiUrl from '../utils/apiConfig';
 
 type VisitorCountResponse = {
   success: boolean;
@@ -15,7 +16,7 @@ type VisitorCount = {
 export async function getVisitorCount(): Promise<VisitorCountResponse> {
   try {
     const response = await axios.get<VisitorCount[]>(
-      "http://localhost:4000/api/v1/unique_visits",
+      `${apiUrl}/api/v1/unique_visits`,
       {
         headers: {
           "Content-Type": "application/json",

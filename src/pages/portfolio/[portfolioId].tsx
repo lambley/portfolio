@@ -7,6 +7,7 @@ import Image from "next/image";
 import { PortfolioType } from "../../../custom";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import axios from "axios";
+import apiUrl from "@/utils/apiConfig";
 
 interface PortfolioItemProps {
   portfolio: PortfolioType;
@@ -72,7 +73,7 @@ export default PortfolioItem;
 // fetch all possible paths for a single portfolio item
 // for static generation of pages
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await axios.get("http://localhost:4000/api/v1/portfolios");
+  const res = await axios.get(`${apiUrl}/api/v1/portfolios`);
   const portfolios = res.data;
   const paths = portfolios.map((portfolio:PortfolioType) => ({
     params: { portfolioId: portfolio.id.toString() },
@@ -100,7 +101,7 @@ export const getStaticProps: GetStaticProps<PortfolioItemProps> = async (
 
   try {
     const res = await axios.get(
-      `http://localhost:4000/api/v1/portfolios/${parseInt(portfolioId, 10)}`
+      `${apiUrl}/api/v1/portfolios/${parseInt(portfolioId, 10)}`
     );
     const portfolio = res.data;
 
