@@ -1,7 +1,7 @@
 import React from "react";
+import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
-import prisma from "../../../lib/prisma";
 import { GetStaticProps } from "next";
 import { PortfolioType } from "../../../custom";
 import { toTitleCase } from "@/utils/stringUtils";
@@ -15,8 +15,16 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
 
   const renderPortfolioList = () => {
     return feed.map((portfolio: PortfolioType) => (
-      <div className="portfolio-item" key={portfolio.id} aria-label="portfolio-item">
-        <Link className="portfolio-link" href={`/portfolio/${portfolio.id}`} aria-label="portfolio-item-link">
+      <div
+        className="portfolio-item"
+        key={portfolio.id}
+        aria-label="portfolio-item"
+      >
+        <Link
+          className="portfolio-link"
+          href={`/portfolio/${portfolio.id}`}
+          aria-label="portfolio-item-link"
+        >
           <div className="portfolio-title">{toTitleCase(portfolio.title)}</div>
           <Image
             src={
@@ -28,7 +36,9 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
             width={300}
             height={200}
           />
-          <div className="portfolio-description">{toTitleCase(portfolio.description)}</div>
+          <div className="portfolio-description">
+            {toTitleCase(portfolio.description)}
+          </div>
         </Link>
       </div>
     ));
@@ -45,9 +55,11 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
 export default Portfolio;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = await prisma.portfolio.findMany();
+  const feed = await axios.get("http://localhost:4000/api/v1/portfolios");
   return {
-    props: { feed },
+    props: {
+      feed: feed.data,
+    },
     revalidate: 10,
   };
 };

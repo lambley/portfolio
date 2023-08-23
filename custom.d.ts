@@ -11,7 +11,7 @@ type PortfolioType = {
   url?: string | null | undefined;
   repoUrl?: string | null | undefined;
   image: string;
-  categories: string[];
+  category: string[];
   date: string;
 };
 
