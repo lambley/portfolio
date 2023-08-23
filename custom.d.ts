@@ -1,9 +1,3 @@
-import { PrismaClient } from "@prisma/client";
-
-declare global {
-  var prisma: PrismaClient;
-}
-
 type PortfolioType = {
   id: number;
   title: string;
