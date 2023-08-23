@@ -5,6 +5,7 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
 import { PortfolioType } from "../../../custom";
+import notFoundPortfolio from "@/utils/notFoundPortfolio";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import axios from "axios";
 import apiUrl from "@/utils/apiConfig";
@@ -73,13 +74,19 @@ export default PortfolioItem;
 // fetch all possible paths for a single portfolio item
 // for static generation of pages
 export const getStaticPaths: GetStaticPaths = async () => {
-  const res = await axios.get(`${apiUrl}/api/v1/portfolios`);
-  const portfolios = res.data;
-  const paths = portfolios.map((portfolio:PortfolioType) => ({
-    params: { portfolioId: portfolio.id.toString() },
-  }));
+  try {
+    const res = await axios.get(`${apiUrl}/api/v1/portfolios`);
+    const portfolios = res.data;
+    const paths = portfolios.map((portfolio: PortfolioType) => ({
+      params: { portfolioId: portfolio.id.toString() },
+    }));
 
-  return { paths, fallback: false };
+    return { paths, fallback: false };
+  } catch (error) {
+    console.error("Error fetching portfolio paths:", error);
+
+    return { paths: [], fallback: false };
+  }
 };
 
 // fetch data for a single portfolio item
@@ -87,17 +94,6 @@ export const getStaticProps: GetStaticProps<PortfolioItemProps> = async (
   context
 ) => {
   const portfolioId = context.params?.portfolioId as string;
-
-  const notFoundPortfolio: PortfolioType = {
-    id: 0,
-    title: "Not Found",
-    description: "Not Found",
-    url: "Not Found",
-    repoUrl: "Not Found",
-    image: "Not Found",
-    category: ["Not Found"],
-    date: "Not Found",
-  };
 
   try {
     const res = await axios.get(

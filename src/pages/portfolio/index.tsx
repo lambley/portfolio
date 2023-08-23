@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GetStaticProps } from "next";
 import { PortfolioType } from "../../../custom";
+import notFoundPortfolio from "@/utils/notFoundPortfolio";
 import { toTitleCase } from "@/utils/stringUtils";
 
 interface PortfolioProps {
@@ -56,11 +57,22 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
 export default Portfolio;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const feed = await axios.get(`${apiUrl}/api/v1/portfolios`);
-  return {
-    props: {
-      feed: feed.data,
-    },
-    revalidate: 10,
-  };
+  try {
+    const feed = await axios.get(`${apiUrl}/api/v1/portfolios`);
+    return {
+      props: {
+        feed: feed.data,
+      },
+      revalidate: 10,
+    };
+  } catch (error) {
+    console.error("Error fetching portfolio data:", error);
+
+    return {
+      props: {
+        feed: [notFoundPortfolio],
+      },
+      revalidate: 10,
+    };
+  }
 };
