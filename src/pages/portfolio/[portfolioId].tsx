@@ -85,7 +85,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   } catch (error) {
     console.error("Error fetching portfolio paths:", error);
 
-    return { paths: [], fallback: false };
+    return { paths: [{ params: { portfolioId: "0" } }], fallback: false };
   }
 };
 
