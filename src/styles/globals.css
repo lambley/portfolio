@@ -38,7 +38,7 @@ body {
 @media (max-width: 767px) {
   .theme-toggle {
     font-size: 1rem;
-    top: 64px;
+    top: 68px;
     right: 4px;
   }
 }
