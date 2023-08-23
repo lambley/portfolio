@@ -41,7 +41,7 @@ describe("Navigation", () => {
     const portfolioLink = screen.getByText("Portfolio");
 
     expect(homeLink.getAttribute("href")).toBe("/");
-    expect(blogLink.getAttribute("href")).toBe("/");
+    expect(blogLink.getAttribute("href")).toBe("/blog");
     expect(portfolioLink.getAttribute("href")).toBe("/portfolio");
   });
 });
