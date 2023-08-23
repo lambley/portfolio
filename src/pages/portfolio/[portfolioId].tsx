@@ -2,18 +2,19 @@ import React from "react";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
-import prisma from "../../../lib/prisma";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
 import { PortfolioType } from "../../../custom";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
+import axios from "axios";
+import apiUrl from "@/utils/apiConfig";
 
 interface PortfolioItemProps {
   portfolio: PortfolioType;
 }
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
-  const { id, title, description, image, categories, date } = portfolio;
+  const { id, title, description, image, category, date } = portfolio;
 
   const url = portfolio.url || "Not Found";
   const repoUrl = portfolio.repoUrl || "Not Found";
@@ -56,7 +57,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
       </p>
       <p>Categories:</p>
       <div className="portfolio-details-categories-list">
-        {categories.map((cat, index) => (
+        {category.map((cat, index) => (
           <p key={index} className="portfolio-detail-category">
             {toSentenceCase(cat)}
           </p>
@@ -72,8 +73,9 @@ export default PortfolioItem;
 // fetch all possible paths for a single portfolio item
 // for static generation of pages
 export const getStaticPaths: GetStaticPaths = async () => {
-  const portfolios = await prisma.portfolio.findMany();
-  const paths = portfolios.map((portfolio) => ({
+  const res = await axios.get(`${apiUrl}/api/v1/portfolios`);
+  const portfolios = res.data;
+  const paths = portfolios.map((portfolio:PortfolioType) => ({
     params: { portfolioId: portfolio.id.toString() },
   }));
 
@@ -93,14 +95,15 @@ export const getStaticProps: GetStaticProps<PortfolioItemProps> = async (
     url: "Not Found",
     repoUrl: "Not Found",
     image: "Not Found",
-    categories: ["Not Found"],
+    category: ["Not Found"],
     date: "Not Found",
   };
 
   try {
-    const portfolio = await prisma.portfolio.findUnique({
-      where: { id: parseInt(portfolioId, 10) },
-    });
+    const res = await axios.get(
+      `${apiUrl}/api/v1/portfolios/${parseInt(portfolioId, 10)}`
+    );
+    const portfolio = res.data;
 
     if (portfolio) {
       return {

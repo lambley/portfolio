@@ -1,28 +1,17 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { getVisitorCount } from "@/api/visitorCount";
 import DigitFrame from "./digitFrame";
 
 const VisitorCounter = (): JSX.Element => {
   const [visitorCount, setVisitorCount] = useState(0);
 
   useEffect(() => {
-    async function getVisitorCount() {
-      try {
-        const response = await axios.post("/api/visitorCount");
-        const data = response.data;
-
-        if (data && data.visitorCount !== undefined) {
-          setVisitorCount(data.visitorCount);
-        } else {
-          console.error("Invalid response data:", data);
-          setVisitorCount(0);
-        }
-      } catch (error) {
-        console.error(error);
-        setVisitorCount(0);
-      }
+    async function fetchData() {
+      const response = await getVisitorCount();
+      setVisitorCount(response.visitorCount);
     }
-    getVisitorCount();
+
+    fetchData();
   }, []);
 
   const digitArray = visitorCount.toString().split("").map(Number);
