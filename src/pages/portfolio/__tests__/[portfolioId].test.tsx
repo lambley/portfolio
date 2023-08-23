@@ -14,7 +14,7 @@ const mockPortfolio = {
   url: "https://www.example.com",
   repoUrl: "https://www.github.com/example",
   image: "test.jpg",
-  categories: ["Category 1", "Category 2"],
+  category: ["Category 1", "Category 2"],
   date: "2023-08-19",
 };
 
