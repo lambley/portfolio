@@ -1,62 +1,58 @@
-import visitorCount from "../visitorCount";
+import axios from "axios";
+import { getVisitorCount } from "@/api/visitorCount";
 
-describe("visitorCount", () => {
-  const res = {
-    setHeader: jest.fn(),
-    status: jest.fn().mockReturnThis(),
-    json: jest.fn(),
-  };
+jest.mock("axios");
 
-  const uniqueReq = {
-    cookies: {},
-  };
+describe("getVisitorCount", () => {
+  it("should return visitor count when response status is 200", async () => {
+    const mockResponse = {
+      status: 200,
+      data: [{ id: 1, count: 10, date: "2023-08-23" }],
+    };
+    (axios.get as jest.Mock).mockResolvedValue(mockResponse);
 
-  const notUniqueReq = {
-    cookies: {
-      unique_visitor: true,
-    },
-  };
+    const result = await getVisitorCount();
 
-  it("should increment the visitor count if the user doesn't have a cookie", () => {
-    // make 3 unique requests
-    visitorCount(uniqueReq as any, res as any);
-    visitorCount(uniqueReq as any, res as any);
-    visitorCount(uniqueReq as any, res as any);
-
-    // check the 3rd response
-    expect(res.json.mock.calls[2][0]).toEqual({ visitorCount: 3 });
-    expect(res.status).toHaveBeenCalledWith(200);
+    expect(result.success).toBe(true);
+    expect(result.message).toBe("Visitor count retrieved successfully");
+    expect(result.visitorCount).toBe(10);
   });
 
-  it("should not increment the visitor count if the user has a cookie", () => {
-    // make 4th request
-    visitorCount(notUniqueReq as any, res as any);
+  it("should return zero visitor count when response data is empty", async () => {
+    const mockResponse = {
+      status: 200,
+      data: [],
+    };
+    (axios.get as jest.Mock).mockResolvedValue(mockResponse);
 
-    // check the 4th response
-    expect(res.json.mock.calls[3][0]).toEqual({ visitorCount: 3 });
-    expect(res.status).toHaveBeenCalledWith(200);
+    const result = await getVisitorCount();
+
+    expect(result.success).toBe(false);
+    expect(result.message).toBe("Visitor count not found or other error");
+    expect(result.visitorCount).toBe(0);
   });
 
-  it("should calculate the visitor count correctly", () => {
-    // make 6 more requests - total of 10 in sequenial tests
-    visitorCount(uniqueReq as any, res as any);
-    visitorCount(uniqueReq as any, res as any);
-    visitorCount(uniqueReq as any, res as any);
-    visitorCount(notUniqueReq as any, res as any);
-    visitorCount(notUniqueReq as any, res as any);
-    visitorCount(uniqueReq as any, res as any);
+  it("should return zero visitor count when response status is not 200", async () => {
+    const mockResponse = {
+      status: 500,
+      data: [],
+    };
+    (axios.get as jest.Mock).mockResolvedValue(mockResponse);
 
-    // check the 10th response
-    expect(res.json.mock.calls[9][0]).toEqual({ visitorCount: 7 });
-    expect(res.status).toHaveBeenCalledWith(200);
+    const result = await getVisitorCount();
+
+    expect(result.success).toBe(false);
+    expect(result.message).toBe("Visitor count not found or other error");
+    expect(result.visitorCount).toBe(0);
   });
 
-  it("should set a cookie if the user doesn't have one", () => {
-    visitorCount(uniqueReq as any, res as any);
+  it("should handle network error and return zero visitor count", async () => {
+    (axios.get as jest.Mock).mockRejectedValue(new Error("Network error"));
 
-    expect(res.setHeader).toHaveBeenCalledWith(
-      "Set-Cookie",
-      "unique_visitor=true; Max-Age=86400"
-    );
+    const result = await getVisitorCount();
+
+    expect(result.success).toBe(false);
+    expect(result.message).toBe("Error getting visitor count");
+    expect(result.visitorCount).toBe(0);
   });
 });

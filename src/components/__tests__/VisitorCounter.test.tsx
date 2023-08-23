@@ -1,31 +1,35 @@
 import React from "react";
-import { act, render, screen } from "@testing-library/react";
+import { act, render, screen, waitFor } from "@testing-library/react";
 import VisitorCounter from "../VisitorCounter";
-import axios from "axios";
+import * as visitorCountApi from "@/api/visitorCount";
 
-jest.mock("axios");
+jest.mock("@/api/visitorCount");
 
 describe("VisitorCounter", () => {
-  it("should render correctly", () => {
-    render(<VisitorCounter />);
-    const counter = screen.getByText(/unique visitor/i);
-    expect(counter).toBeInTheDocument();
+  beforeEach(() => {
+    jest.resetAllMocks();
   });
 
   it("should render the correct number of visitors", async () => {
-    const mockResponse = { data: { visitorCount: 3 } };
-    axios.post = jest.fn().mockResolvedValue(mockResponse);
+    const mockResponse = {
+      success: true,
+      message: "Visitor count retrieved successfully",
+      visitorCount: 4,
+    };
+    (visitorCountApi.getVisitorCount as jest.Mock).mockResolvedValue(
+      mockResponse
+    );
 
     await act(async () => {
       render(<VisitorCounter />);
     });
 
-    const counter = await screen.findByText(/unique visitor/i);
-    expect(counter).toBeInTheDocument();
+    await waitFor(() => {
+      const counter = screen.getByText(/unique visitor/i);
+      expect(counter).toBeInTheDocument();
 
-    expect(axios.post).toHaveBeenCalledWith("/api/visitorCount");
-
-    const digits = screen.getByText("3");
-    expect(digits).toBeInTheDocument();
+      const digits = screen.getByText("4");
+      expect(digits).toBeInTheDocument();
+    });
   });
 });
