@@ -20,7 +20,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
     portfolio;
 
   const url = portfolio.url || "Not Found";
-  const repoUrl = portfolio.repoUrl || "Not Found";
+  const repoUrl = portfolio.repo_url || "Not Found";
 
   const router = useRouter();
 

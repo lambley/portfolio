@@ -9,7 +9,7 @@ const notFoundPortfolio: PortfolioType = {
   title: "Not Found",
   description: "Not Found",
   url: "Not Found",
-  repoUrl: "Not Found",
+  repo_url: "Not Found",
   image: "404",
   category: ["Not Found"],
   createdAt: yesterday,
