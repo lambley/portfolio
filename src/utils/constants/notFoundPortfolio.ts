@@ -1,4 +1,8 @@
-import { PortfolioType } from "../../custom";
+import { PortfolioType } from "../../../custom";
+
+let today = new Date();
+let yesterday = new Date(today);
+yesterday.setDate(today.getDate() - 1);
 
 const notFoundPortfolio: PortfolioType = {
   id: 0,
@@ -8,7 +12,8 @@ const notFoundPortfolio: PortfolioType = {
   repoUrl: "Not Found",
   image: "404",
   category: ["Not Found"],
-  date: "Not Found",
+  createdAt: yesterday,
+  updatedAt: today,
 };
 
 export default notFoundPortfolio;
