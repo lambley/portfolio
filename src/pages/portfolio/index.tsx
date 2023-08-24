@@ -59,9 +59,17 @@ export default Portfolio;
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const feed = await axios.get(`${apiUrl}/api/v1/portfolios`);
+
+    // sort portfolio feed by date by default
+    const sortedFeed = feed.data.sort((a: PortfolioType, b: PortfolioType) => {
+      const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+      const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+      return dateB - dateA;
+    });
+
     return {
       props: {
-        feed: feed.data,
+        feed: sortedFeed,
       },
       revalidate: 10,
     };
