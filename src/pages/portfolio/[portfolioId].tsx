@@ -5,17 +5,19 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
 import { PortfolioType } from "../../../custom";
-import notFoundPortfolio from "@/utils/notFoundPortfolio";
+import notFoundPortfolio from "@/utils/constants/notFoundPortfolio";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import axios from "axios";
 import apiUrl from "@/utils/apiConfig";
+import moment from "moment";
 
 interface PortfolioItemProps {
   portfolio: PortfolioType;
 }
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
-  const { id, title, description, image, category, date } = portfolio;
+  let { id, title, description, image, category, createdAt, updatedAt } =
+    portfolio;
 
   const url = portfolio.url || "Not Found";
   const repoUrl = portfolio.repoUrl || "Not Found";
@@ -64,7 +66,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
           </p>
         ))}
       </div>
-      <p>date: {date}</p>
+      <p>date: {moment(createdAt).format("DD-MMM-YY")}</p>
     </div>
   );
 };
@@ -102,6 +104,8 @@ export const getStaticProps: GetStaticProps<PortfolioItemProps> = async (
     const portfolio = res.data;
 
     if (portfolio) {
+      console.log(portfolio);
+
       return {
         props: {
           portfolio,
