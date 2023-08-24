@@ -10,6 +10,7 @@ import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import axios from "axios";
 import apiUrl from "@/utils/apiConfig";
 import moment from "moment";
+import { getCategoryColour } from "@/utils/categoryColours";
 
 interface PortfolioItemProps {
   portfolio: PortfolioType;
@@ -61,7 +62,11 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
       <p>Categories:</p>
       <div className="portfolio-details-categories-list">
         {category.map((cat, index) => (
-          <p key={index} className="portfolio-detail-category">
+          <p
+            key={index}
+            className="portfolio-detail-category"
+            style={{ backgroundColor: getCategoryColour(cat) }}
+          >
             {toSentenceCase(cat)}
           </p>
         ))}
