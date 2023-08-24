@@ -104,8 +104,6 @@ export const getStaticProps: GetStaticProps<PortfolioItemProps> = async (
     const portfolio = res.data;
 
     if (portfolio) {
-      console.log(portfolio);
-
       return {
         props: {
           portfolio,
