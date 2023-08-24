@@ -2,21 +2,11 @@ import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { mockPortfolioUseRouter } from "@utils/tests/mockUseRouter";
 import PortfolioItem from "../[portfolioId]";
+import { mockPortfolio } from "@/utils/constants/mockPortfolio";
 
 jest.mock("next/router", () => ({
   useRouter: () => mockPortfolioUseRouter(),
 }));
-
-const mockPortfolio = {
-  id: 1,
-  title: "Test Portfolio",
-  description: "Test description",
-  url: "https://www.example.com",
-  repoUrl: "https://www.github.com/example",
-  image: "test.jpg",
-  category: ["Category 1", "Category 2"],
-  date: "2023-08-19",
-};
 
 describe("PortfolioItem", () => {
   beforeEach(() => {

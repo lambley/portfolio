@@ -25,8 +25,6 @@ export async function getVisitorCount(): Promise<VisitorCountResponse> {
       }
     );
 
-    console.log("API Response:", response.data); // Log the data for debugging
-
     if (response.status === 200 && response.data.length > 0) {
       const visitorCount = response.data[0].count;
       return {
