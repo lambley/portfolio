@@ -49,7 +49,7 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
   return (
     <div className="container text-center">
       <h1>Portfolio List</h1>
-      <div className="portfolio-list">{renderPortfolioList()}</div>
+      <div className="portfolio-list mb-3">{renderPortfolioList()}</div>
     </div>
   );
 };
