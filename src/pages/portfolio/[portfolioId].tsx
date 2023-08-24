@@ -16,7 +16,7 @@ interface PortfolioItemProps {
 }
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
-  let { id, title, description, image, category, createdAt, updatedAt } =
+  let { id, title, description, image, category, created_at, updated_at } =
     portfolio;
 
   const url = portfolio.url || "Not Found";
@@ -66,7 +66,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
           </p>
         ))}
       </div>
-      <p>date: {moment(createdAt).format("DD-MMM-YY")}</p>
+      <p>date: {moment(created_at).format("DD-MMM-YY")}</p>
     </div>
   );
 };
