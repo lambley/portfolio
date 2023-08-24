@@ -12,8 +12,8 @@ const notFoundPortfolio: PortfolioType = {
   repo_url: "Not Found",
   image: "404",
   category: ["Not Found"],
-  createdAt: yesterday,
-  updatedAt: today,
+  created_at: yesterday,
+  updated_at: today,
 };
 
 export default notFoundPortfolio;

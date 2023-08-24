@@ -12,8 +12,8 @@ const mockPortfolio = {
   repo_url: "https://www.github.com/example",
   image: "test.jpg",
   category: ["Category 1", "Category 2"],
-  createdAt: yesterday,
-  updatedAt: today,
+  created_at: yesterday,
+  updated_at: today,
 };
 
 export { mockPortfolio };
@@ -27,8 +27,8 @@ const mockPortfolioList = [
     repo_url: "https://www.github.com/example",
     image: "test.jpg",
     category: ["Category 1", "Category 2"],
-    createdAt: yesterday,
-    updatedAt: today,
+    created_at: yesterday,
+    updated_at: today,
   },
   {
     id: 2,
@@ -38,8 +38,8 @@ const mockPortfolioList = [
     repo_url: "https://www.github.com/example",
     image: "test.jpg",
     category: ["Category 1", "Category 2"],
-    createdAt: yesterday,
-    updatedAt: today,
+    created_at: yesterday,
+    updated_at: today,
   },
 ];
 
