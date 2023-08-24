@@ -4,7 +4,7 @@ import Head from "next/head";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import ThemeToggle from "../components/ThemeToggle";
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState("light");
@@ -28,7 +28,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Aaron&apos;s Portfolio</title>
-        <meta name="description" content="Aaron Lambley - Fullstack Developer - Ruby on Rails, React, Nextjs, Python" />
+        <meta
+          name="description"
+          content="Aaron Lambley - Fullstack Developer - Ruby on Rails, React, Nextjs, Python"
+        />
         <meta property="og:image" content="/images/ogimage.png" />
         <link rel="icon" href="/favicon.ico" />
         <link
@@ -42,6 +45,10 @@ function MyApp({ Component, pageProps }: AppProps) {
           type="image/png"
           sizes="32x32"
           href="/favicon-32x32.png"
+        />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"
         />
       </Head>
       <div className={`${theme}-theme`}>

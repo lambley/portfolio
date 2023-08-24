@@ -78,7 +78,8 @@
   gap: 8px;
   flex-direction: row;
   align-items: center;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
 }
 
 .portfolio-detail-category {
@@ -86,4 +87,13 @@
   color: var(--button-text-color);
   padding: 4px 8px;
   border-radius: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  align-content: center;
+}
+
+.portfolio-detail-category i {
+  margin-left: 4px;
 }
