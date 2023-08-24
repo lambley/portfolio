@@ -7,6 +7,10 @@ import { GetStaticProps } from "next";
 import { PortfolioType } from "../../../custom";
 import notFoundPortfolio from "@/utils/constants/notFoundPortfolio";
 import { toTitleCase } from "@/utils/stringUtils";
+import {
+  getAllCategoryColours,
+  getCategoryIcon,
+} from "@/utils/categoryColours";
 
 interface PortfolioProps {
   feed: any;
@@ -46,9 +50,26 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
     ));
   };
 
+  const renderAllCategories = () => {
+    const categoryColours = getAllCategoryColours();
+    return Object.keys(categoryColours).map((category, index) => (
+      <div
+        className="portfolio-detail-category"
+        key={index}
+        style={{ backgroundColor: categoryColours[category] }}
+      >
+        {category} <i className={getCategoryIcon(category)}></i>
+      </div>
+    ));
+  };
+
   return (
     <div className="container text-center">
       <h1>Portfolio List</h1>
+      <h2>Categories</h2>
+      <div className="portfolio-details-categories-list">
+        {renderAllCategories()}
+      </div>
       <div className="portfolio-list mb-3">{renderPortfolioList()}</div>
     </div>
   );
