@@ -6,8 +6,8 @@ type PortfolioType = {
   repo_url?: string | null | undefined;
   image: string;
   category: string[];
-  createdAt: Date;
-  updatedAt: Date;
+  created_at: Date;
+  updated_at: Date;
 };
 
 export type { PortfolioType };
