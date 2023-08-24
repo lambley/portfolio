@@ -49,7 +49,7 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
   return (
     <div className="container text-center">
       <h1>Portfolio List</h1>
-      <div className="portfolio-list">{renderPortfolioList()}</div>
+      <div className="portfolio-list mb-3">{renderPortfolioList()}</div>
     </div>
   );
 };
@@ -59,9 +59,17 @@ export default Portfolio;
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const feed = await axios.get(`${apiUrl}/api/v1/portfolios`);
+
+    // sort portfolio feed by date by default
+    const sortedFeed = feed.data.sort((a: PortfolioType, b: PortfolioType) => {
+      const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+      const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+      return dateB - dateA;
+    });
+
     return {
       props: {
-        feed: feed.data,
+        feed: sortedFeed,
       },
       revalidate: 10,
     };
