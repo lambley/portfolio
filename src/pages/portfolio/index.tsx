@@ -7,7 +7,10 @@ import { GetStaticProps } from "next";
 import { PortfolioType } from "../../../custom";
 import notFoundPortfolio from "@/utils/constants/notFoundPortfolio";
 import { toTitleCase } from "@/utils/stringUtils";
-import { getAllCategoryColours } from "@/utils/categoryColours";
+import {
+  getAllCategoryColours,
+  getCategoryIcon,
+} from "@/utils/categoryColours";
 
 interface PortfolioProps {
   feed: any;
@@ -55,7 +58,7 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
         key={index}
         style={{ backgroundColor: categoryColours[category] }}
       >
-        {category}
+        {category} <i className={getCategoryIcon(category)}></i>
       </div>
     ));
   };

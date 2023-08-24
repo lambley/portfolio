@@ -10,7 +10,7 @@ import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import axios from "axios";
 import apiUrl from "@/utils/apiConfig";
 import moment from "moment";
-import { getCategoryColour } from "@/utils/categoryColours";
+import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
 
 interface PortfolioItemProps {
   portfolio: PortfolioType;
@@ -27,6 +27,22 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
 
   const handleBack = () => {
     router.push("/portfolio");
+  };
+
+  const renderCategories = (categories: string[]) => {
+    return (
+      <div className="portfolio-details-categories-list">
+        {categories.map((cat, index) => (
+          <p
+            key={index}
+            className="portfolio-detail-category"
+            style={{ backgroundColor: getCategoryColour(cat) }}
+          >
+            {toSentenceCase(cat)} <i className={getCategoryIcon(cat)}></i>
+          </p>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -60,17 +76,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
         repo: <a href={repoUrl}>{repoUrl}</a>
       </p>
       <p>Categories:</p>
-      <div className="portfolio-details-categories-list">
-        {category.map((cat, index) => (
-          <p
-            key={index}
-            className="portfolio-detail-category"
-            style={{ backgroundColor: getCategoryColour(cat) }}
-          >
-            {toSentenceCase(cat)}
-          </p>
-        ))}
-      </div>
+      {renderCategories(category)}
       <p>date: {moment(created_at).format("DD-MMM-YY")}</p>
     </div>
   );
