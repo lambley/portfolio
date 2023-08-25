@@ -4,6 +4,8 @@
   --text-color: #000000;
   --button-background-color: #000000;
   --button-text-color: #ffffff;
+  --cta: #007acc;
+  --cta-hover: #007acc;
   --font-mono: "Fira Code", monospace;
   --font-sans: "Fira Sans", sans-serif;
   --navbar-height: 60px;
@@ -19,6 +21,8 @@
     --text-color: #ffffff;
     --button-background-color: #ffffff;
     --button-text-color: #000000;
+    --cta: #a05ee6;
+    --cta-hover: #b785ec;
     --font-mono: "Fira Code", monospace;
   }
 }
