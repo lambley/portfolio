@@ -19,10 +19,10 @@ const Navigation: React.FC<NavigationProps> = ({
           </Link>
         </div>
         <div className="navbar-right">
-          <Link className="navbar-link" href="/blog">
+          <Link className="navbar-link navbar-link-hover" href="/blog">
             Blog
           </Link>
-          <Link className="navbar-link" href="/portfolio">
+          <Link className="navbar-link navbar-link-hover" href="/portfolio">
             Portfolio
           </Link>
         </div>

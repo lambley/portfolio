@@ -3,8 +3,45 @@ import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFile } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage = (): JSX.Element => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
+
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
+  const renderHeadline = (): JSX.Element => {
+    if (isMobile) {
+      return (
+        <ul className="mobile-headline-wrapper">
+          <li className="text-center mobile-headline-element">Fullstack Developer 💻</li>
+          <li className="text-center mobile-headline-element">Web-Dev Enthusiast 🌐</li>
+          <li className="text-center mobile-headline-element">Bookworm 📚</li>
+          <li className="text-center mobile-headline-element">Dog Lover 🐶</li>
+        </ul>
+      );
+    } else {
+      return (
+        <h3 className="text-center mb-3">
+          Fullstack Developer 💻 | Web-Dev Enthusiast 🌐 | Bookworm 📚 | Dog
+          Lover 🐶
+        </h3>
+      );
+    }
+  };
+
   return (
     <Container className="py-4">
       <Typewriter
@@ -26,10 +63,19 @@ const HomePage = (): JSX.Element => {
         </div>
 
         <div className="border rounded p-3 bio-container">
-          <h3 className="text-center mb-3">
-            Fullstack Developer 💻 | Web-Dev Enthusiast 🌐 | Bookworm 📚 | Dog
-            Lover 🐶
-          </h3>
+          {renderHeadline()}
+          <div className="download-wrapper my-3">
+            <a
+              className="download-cta"
+              href="https://drive.google.com/file/d/194XBRNsES3pMPA1mUcaNdOOpsbNHh7P0/view?usp=sharing"
+              onMouseOver={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              target="blank"
+            >
+              Download my cv{" "}
+              <FontAwesomeIcon icon={faFile} bounce={isHovered} />
+            </a>
+          </div>
           <p className="text-center">
             Experienced Ruby on Rails and JavaScript developer skilled in
             startup and technical consultancy settings, and well-practiced at
@@ -42,9 +88,6 @@ const HomePage = (): JSX.Element => {
           <p className="text-center">
             Currently learning 🌱 Next.js framework, and CI/CD with GitHub
             actions and Vercel.
-          </p>
-          <p className="text-center my-3">
-            Check out more of my work <Link href={"/portfolio"}>here</Link>
           </p>
         </div>
       </div>

@@ -40,6 +40,11 @@ h1, h2, h3, h4, h5, h6 {
   position: fixed;
 }
 
+.theme-toggle:hover {
+  color: var(--cta);
+  transition: color 0.5s ease-in-out;
+}
+
 @media (max-width: 767px) {
   .theme-toggle {
     font-size: 1rem;
@@ -54,6 +59,8 @@ h1, h2, h3, h4, h5, h6 {
   --button-background-color: #000000;
   --button-text-color: #ffffff;
   --hover-shadow: 1px 1px 4px 1px var(--button-background-color);
+  --cta: #007acc;
+  --cta-hover: #007acc;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -64,6 +71,8 @@ h1, h2, h3, h4, h5, h6 {
   --button-background-color: #ffffff;
   --button-text-color: #000000;
   --hover-shadow: 1px 1px 4px 1px var(--button-background-color);
+  --cta: #a05ee6;
+  --cta-hover: #b785ec;
   background-color: var(--background-color);
   color: var(--text-color);
 }
