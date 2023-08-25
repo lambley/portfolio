@@ -1,5 +1,7 @@
 .visitor-counter {
-  font-family: "Courier New", monospace;
+  height: 36px;
+  font-family: var(--font-mono);
+  font-weight: 200;
   background-color: var(--button-background-color);
   color: var(--button-text-color);
   border-radius: 8px;

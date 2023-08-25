@@ -5,6 +5,7 @@
   --button-background-color: #000000;
   --button-text-color: #ffffff;
   --font-mono: "Fira Code", monospace;
+  --font-sans: "Fira Sans", sans-serif;
   --navbar-height: 60px;
   --footer-height: 60px;
   --page-margin-top: var(--navbar-height);

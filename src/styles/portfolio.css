@@ -49,6 +49,7 @@
 }
 
 .portfolio-back-button {
+  font-family: var(--font-mono);
   border-radius: 4px;
   background-color: var(--button-background-color);
   color: var(--button-text-color);
@@ -73,6 +74,7 @@
 }
 
 .portfolio-details-categories-list {
+  font-family: var(--font-mono);
   display: flex;
   justify-content: center;
   gap: 8px;
