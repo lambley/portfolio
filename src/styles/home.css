@@ -31,3 +31,17 @@
   transition: transform 0.5s ease-in-out;
   box-shadow: none;
 }
+
+.mobile-headline-wrapper {
+  padding: 0;
+  list-style-type: none;
+}
+
+.mobile-headline-element {
+  list-style: none;
+  /* this is the same as H3 font styles */
+  font-size: calc(1.3rem + .6vw);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+}

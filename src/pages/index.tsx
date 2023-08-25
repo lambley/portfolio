@@ -8,6 +8,39 @@ import { faFile } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage = (): JSX.Element => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
+
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+  };
+
+  const renderHeadline = (): JSX.Element => {
+    if (isMobile) {
+      return (
+        <ul className="mobile-headline-wrapper">
+          <li className="text-center mobile-headline-element">Fullstack Developer 💻</li>
+          <li className="text-center mobile-headline-element">Web-Dev Enthusiast 🌐</li>
+          <li className="text-center mobile-headline-element">Bookworm 📚</li>
+          <li className="text-center mobile-headline-element">Dog Lover 🐶</li>
+        </ul>
+      );
+    } else {
+      return (
+        <h3 className="text-center mb-3">
+          Fullstack Developer 💻 | Web-Dev Enthusiast 🌐 | Bookworm 📚 | Dog
+          Lover 🐶
+        </h3>
+      );
+    }
+  };
 
   return (
     <Container className="py-4">
@@ -30,10 +63,7 @@ const HomePage = (): JSX.Element => {
         </div>
 
         <div className="border rounded p-3 bio-container">
-          <h3 className="text-center mb-3">
-            Fullstack Developer 💻 | Web-Dev Enthusiast 🌐 | Bookworm 📚 | Dog
-            Lover 🐶
-          </h3>
+          {renderHeadline()}
           <div className="download-wrapper my-3">
             <a
               className="download-cta"
@@ -42,7 +72,8 @@ const HomePage = (): JSX.Element => {
               onMouseLeave={() => setIsHovered(false)}
               target="blank"
             >
-              Download my cv <FontAwesomeIcon icon={faFile} bounce={isHovered} />
+              Download my cv{" "}
+              <FontAwesomeIcon icon={faFile} bounce={isHovered} />
             </a>
           </div>
           <p className="text-center">
