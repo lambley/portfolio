@@ -2,3 +2,32 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.download-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.download-cta {
+  background: var(--cta);
+  color: var(--button-text-color);
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.download-cta:hover {
+  background-color: var(--cta-hover);
+  transition: background-color 0.5s ease-in-out;
+  transform: translateY(-5px);
+  box-shadow: var(--hover-shadow);
+}
+
+.download-cta:active {
+  transform: translateY(0px);
+  transition: transform 0.5s ease-in-out;
+  box-shadow: none;
+}

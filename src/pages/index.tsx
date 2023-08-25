@@ -3,8 +3,12 @@ import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFile } from "@fortawesome/free-solid-svg-icons";
 
 const HomePage = (): JSX.Element => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <Container className="py-4">
       <Typewriter
@@ -30,6 +34,17 @@ const HomePage = (): JSX.Element => {
             Fullstack Developer 💻 | Web-Dev Enthusiast 🌐 | Bookworm 📚 | Dog
             Lover 🐶
           </h3>
+          <div className="download-wrapper my-3">
+            <a
+              className="download-cta"
+              href="https://drive.google.com/file/d/194XBRNsES3pMPA1mUcaNdOOpsbNHh7P0/view?usp=drive_link"
+              onMouseOver={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              target="blank"
+            >
+              Download my cv <FontAwesomeIcon icon={faFile} bounce={isHovered} />
+            </a>
+          </div>
           <p className="text-center">
             Experienced Ruby on Rails and JavaScript developer skilled in
             startup and technical consultancy settings, and well-practiced at
@@ -42,9 +57,6 @@ const HomePage = (): JSX.Element => {
           <p className="text-center">
             Currently learning 🌱 Next.js framework, and CI/CD with GitHub
             actions and Vercel.
-          </p>
-          <p className="text-center my-3">
-            Check out more of my work <Link href={"/portfolio"}>here</Link>
           </p>
         </div>
       </div>
