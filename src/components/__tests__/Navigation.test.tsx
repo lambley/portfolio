@@ -9,7 +9,7 @@ describe("Navigation", () => {
         <div>Test Child Content</div>
       </Navigation>
     );
-    const homeLink = screen.getByText("Home");
+    const homeLink = screen.getByLabelText("Home");
     const blogLink = screen.getByText("Blog");
     const portfolioLink = screen.getByText("Portfolio");
 
@@ -36,7 +36,7 @@ describe("Navigation", () => {
         <div>Test Child Content</div>
       </Navigation>
     );
-    const homeLink = screen.getByText("Home");
+    const homeLink = screen.getByLabelText("Home");
     const blogLink = screen.getByText("Blog");
     const portfolioLink = screen.getByText("Portfolio");
 

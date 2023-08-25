@@ -14,7 +14,7 @@ const Navigation: React.FC<NavigationProps> = ({
     <>
       <div className="custom-navbar">
         <div className="navbar-left">
-          <Link className="navbar-link" href="/">
+          <Link className="navbar-link" href="/" aria-label="Home">
             <FontAwesomeIcon icon={faHouse} />
           </Link>
         </div>
