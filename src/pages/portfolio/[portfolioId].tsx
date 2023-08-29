@@ -5,7 +5,7 @@ import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { GetStaticProps, GetStaticPaths } from "next";
 import Image from "next/image";
 import { PortfolioType } from "../../../custom";
-import notFoundPortfolio from "@/utils/constants/notFoundPortfolio";
+import { notFoundPortfolio } from "@/utils/constants/notFoundTypes";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import axios from "axios";
 import apiUrl from "@/utils/apiConfig";
