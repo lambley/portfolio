@@ -10,4 +10,17 @@ type PortfolioType = {
   updated_at?: Date;
 };
 
-export type { PortfolioType };
+type BlogType = {
+  id: number;
+  title: string;
+  content: string;
+  image: string;
+  meta_title: string;
+  meta_description: string;
+  status: string;
+  tags: string[];
+  created_at?: Date;
+  updated_at?: Date;
+}
+
+export type { PortfolioType, BlogType };
