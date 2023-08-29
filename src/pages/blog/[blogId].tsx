@@ -74,7 +74,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
         }}
       />
       <p>{content}</p>
-      <p>{renderTags(tags)}</p>
+      <div>{renderTags(tags)}</div>
     </div>
   );
 };
