@@ -10,6 +10,10 @@ type PortfolioType = {
   updated_at?: Date;
 };
 
+interface PortfolioItemProps {
+  portfolio: PortfolioType;
+}
+
 type BlogType = {
   id: number;
   title: string;
@@ -23,4 +27,8 @@ type BlogType = {
   updated_at?: Date;
 }
 
-export type { PortfolioType, BlogType };
+interface BlogItemProps {
+  blog: BlogType;
+}
+
+export type { PortfolioType, PortfolioItemProps, BlogType, BlogItemProps };
