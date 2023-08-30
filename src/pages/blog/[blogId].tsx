@@ -63,9 +63,9 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
       </div>
       <Image
         src={
-          `/images/${blog.image}.png` || "https://placehold.co/300x200/png"
+          `/images/${image}.png` || "https://placehold.co/300x200/png"
         }
-        alt=""
+        alt={title}
         className="portfolio-image"
         width={300}
         height={200}
