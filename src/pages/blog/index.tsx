@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React from "react";
 import axios from "axios";
 import apiUrl from "@/utils/apiConfig";
 import Link from "next/link";
@@ -75,9 +75,7 @@ const Blog: React.FC<BlogProps> = (props) => {
   return (
     <div className="container text-center">
       <h1>Blog</h1>
-      <Suspense fallback={<Loading />}>
-        <div className="blog-list">{renderBlogList()}</div>
-      </Suspense>
+      <div className="blog-list">{renderBlogList()}</div>
     </div>
   );
 };
