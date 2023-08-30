@@ -9,6 +9,8 @@
 @import "layout.css";
 @import "visitorCounter.css";
 @import "footer.css";
+@import "markdown.css";
+@import "blog.css";
 
 /* External styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";
@@ -61,6 +63,8 @@ h1, h2, h3, h4, h5, h6 {
   --hover-shadow: 1px 1px 4px 1px var(--button-background-color);
   --cta: #007acc;
   --cta-hover: #007acc;
+  --markdown-background-color: #eff2ff;
+  --markdown-text-color: #000000;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -73,6 +77,8 @@ h1, h2, h3, h4, h5, h6 {
   --hover-shadow: 1px 1px 4px 1px var(--button-background-color);
   --cta: #a05ee6;
   --cta-hover: #b785ec;
+  --markdown-background-color: #161b22;
+  --markdown-text-color: #ffffff;
   background-color: var(--background-color);
   color: var(--text-color);
 }
