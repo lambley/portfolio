@@ -99,6 +99,12 @@
   font-size: 0.75rem;
 }
 
+.blog-detail-title {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @media screen and (max-width: 767px) {
   .blog-item {
     flex-direction: column;
@@ -146,5 +152,10 @@
 
   .blog-tags-list {
     margin-top: 8px;
+  }
+
+  .blog-detail-title {
+    width: 80%;
+    padding-top: 36px;
   }
 }
