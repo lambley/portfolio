@@ -1,0 +1,25 @@
+.react-markdown-wrapper {
+  text-align: left;
+  padding: 1rem;
+  margin: 1rem;
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+}
+
+.react-markdown-wrapper h1, h2, h3, h4, h5 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+}
+
+.react-markdown-wrapper pre {
+  background-color: var(--markdown-background-color);
+  padding: 1rem;
+}
+
+.react-markdown-wrapper pre code {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--markdown-text-color);
+  padding: 0.25rem;
+  border-radius: 4px;
+}

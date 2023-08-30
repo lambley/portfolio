@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { GetStaticProps } from "next";
 import { PortfolioType } from "../../../custom";
-import notFoundPortfolio from "@/utils/constants/notFoundPortfolio";
+import { notFoundPortfolio } from "@/utils/constants/notFoundTypes";
 import { toTitleCase } from "@/utils/stringUtils";
 import {
   getAllCategoryColours,
