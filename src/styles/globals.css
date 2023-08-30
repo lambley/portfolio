@@ -63,7 +63,7 @@ h1, h2, h3, h4, h5, h6 {
   --hover-shadow: 1px 1px 4px 1px var(--button-background-color);
   --cta: #007acc;
   --cta-hover: #007acc;
-  --markdown-background-color: #ffffff;
+  --markdown-background-color: #eff2ff;
   --markdown-text-color: #000000;
   background-color: var(--background-color);
   color: var(--text-color);
