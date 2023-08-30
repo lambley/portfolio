@@ -11,6 +11,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import moment from "moment";
+import ReactMarkdown from 'react-markdown'
 
 const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
   let {
@@ -73,7 +74,11 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
           width: "300px",
         }}
       />
-      <p>{content}</p>
+      <div className="react-markdown-wrapper">
+        <ReactMarkdown>
+          {content}
+        </ReactMarkdown>
+      </div>
       <div>{renderTags(tags)}</div>
     </div>
   );
