@@ -17,10 +17,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: var(--button-background-color);
 }
 
 .blog-item:hover {
   box-shadow: var(--hover-shadow);
+  background-color: var(--blog-hover-background-color);
 }
 
 .blog-link {
@@ -32,6 +34,7 @@
   justify-content: space-around;
   align-content: center;
   flex-wrap: nowrap;
+  color: var(--button-text-color);
 }
 
 .blog-image {
@@ -99,6 +102,12 @@
   font-size: 0.75rem;
 }
 
+.blog-detail-title {
+  width: 50%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 @media screen and (max-width: 767px) {
   .blog-item {
     flex-direction: column;
@@ -146,5 +155,10 @@
 
   .blog-tags-list {
     margin-top: 8px;
+  }
+
+  .blog-detail-title {
+    width: 80%;
+    padding-top: 36px;
   }
 }

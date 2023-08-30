@@ -58,7 +58,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
         <FontAwesomeIcon icon={faCaretLeft} /> Back
       </button>
       <div>
-        <h1 className="portfolio-detail-title">{title}</h1>
+        <h1 className="blog-detail-title">{title}</h1>
         <i>{moment(created_at).format("MMMM Do YYYY")}</i>
       </div>
       <Image

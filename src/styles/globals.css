@@ -65,6 +65,7 @@ h1, h2, h3, h4, h5, h6 {
   --cta-hover: #007acc;
   --markdown-background-color: #eff2ff;
   --markdown-text-color: #000000;
+  --blog-hover-background-color: #161b22;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -79,6 +80,7 @@ h1, h2, h3, h4, h5, h6 {
   --cta-hover: #b785ec;
   --markdown-background-color: #161b22;
   --markdown-text-color: #ffffff;
+  --blog-hover-background-color: #eff2ff;
   background-color: var(--background-color);
   color: var(--text-color);
 }
