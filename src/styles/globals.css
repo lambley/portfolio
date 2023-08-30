@@ -10,6 +10,7 @@
 @import "visitorCounter.css";
 @import "footer.css";
 @import "markdown.css";
+@import "blog.css";
 
 /* External styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";

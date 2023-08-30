@@ -1,0 +1,150 @@
+.blog-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.blog-item {
+  border: 1px solid;
+  padding: 16px;
+  margin: 8px;
+  border-radius: 4px;
+  max-width: 700px;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.blog-item:hover {
+  box-shadow: var(--hover-shadow);
+}
+
+.blog-link {
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
+  flex-wrap: nowrap;
+}
+
+.blog-image {
+  width: 100px;
+  height: 100px;
+  border-radius: 4px;
+}
+
+.blog-item-text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: flex-start;
+  padding: 16px;
+}
+
+.blog-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 8px;
+  max-width: 550px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.blog-description {
+  font-size: 1rem;
+  text-align: left;
+  margin-bottom: 16px;
+  max-width: 550px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.blog-date {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+}
+
+.blog-metadata {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.blog-tags-list {
+  font-family: var(--font-mono);
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.blog-tag {
+  border-radius: 4px;
+  padding: 4px;
+  font-size: 0.75rem;
+}
+
+@media screen and (max-width: 767px) {
+  .blog-item {
+    flex-direction: column;
+    height: auto;
+    width: 100%;
+  }
+
+  .blog-link {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .blog-image {
+    width: 100%;
+    height: auto;
+  }
+
+  .blog-item-text {
+    width: 100%;
+    padding: 0;
+    margin-top: 16px;
+  }
+
+  .blog-title {
+    font-size: 1.25rem;
+    margin-bottom: 4px;
+    width: 100%;
+  }
+
+  .blog-description {
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+    width: 100%;
+  }
+
+  .blog-date {
+    font-size: 0.5rem;
+  }
+
+  .blog-metadata {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .blog-tags-list {
+    margin-top: 8px;
+  }
+}
