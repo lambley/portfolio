@@ -1,10 +1,10 @@
-import { PortfolioType } from "../../../custom";
+import { PortfolioType, BlogType } from "../../../custom";
 
 let today = new Date();
 let yesterday = new Date(today);
 yesterday.setDate(today.getDate() - 1);
 
-const mockPortfolio = {
+const mockPortfolio: PortfolioType = {
   id: 1,
   title: "Test Portfolio",
   description: "Test description",
@@ -16,9 +16,7 @@ const mockPortfolio = {
   updated_at: today,
 };
 
-export { mockPortfolio };
-
-const mockPortfolioList = [
+const mockPortfolioList: PortfolioType[] = [
   {
     id: 1,
     title: "Test Portfolio",
@@ -43,4 +41,38 @@ const mockPortfolioList = [
   },
 ];
 
-export { mockPortfolioList };
+const mockBlog: BlogType = {
+  id: 1,
+  title: "Test Blog",
+  content: "Test content",
+  image: "test",
+  meta_title: "Test meta title",
+  meta_description: "Test meta description",
+  status: "published",
+  tags: ["Tag 1", "Tag 2"],
+};
+
+const mockBlogList: BlogType[] = [
+  {
+    id: 1,
+    title: "Test Blog",
+    content: "Test content",
+    image: "test",
+    meta_title: "Test meta title",
+    meta_description: "Test meta description",
+    status: "published",
+    tags: ["Tag 1", "Tag 2"],
+  },
+  {
+    id: 2,
+    title: "Test Blog 2",
+    content: "Test content 2",
+    image: "test",
+    meta_title: "Test meta title",
+    meta_description: "Test meta description",
+    status: "published",
+    tags: ["Tag 1", "Tag 2"],
+  },
+];
+
+export { mockPortfolioList, mockPortfolio, mockBlogList, mockBlog };
