@@ -1,13 +1,14 @@
-import React from 'react';
+import React from "react";
+import LoadingSpinner from "./LoadingSpinner";
 
 interface LoadingProps {
   message?: string;
 }
 
-const Loading: React.FC<LoadingProps> = ({ message = 'Loading...' }) => {
+const Loading: React.FC<LoadingProps> = ({ message = "Loading..." }) => {
   return (
     <div className="loading-container">
-      <div className="loading-spinner"></div>
+      <LoadingSpinner />
       <p className="loading-message">{message}</p>
     </div>
   );
