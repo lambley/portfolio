@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { mockPortfolioUseRouter } from "@utils/tests/mockUseRouter";
+import { mockPortfolioUseRouter } from "@utils/tests/mocks/mockUseRouter";
 import BlogItem from "../[blogId]";
 import { mockBlog } from "@/utils/constants/mockPortfolio";
 
