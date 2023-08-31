@@ -14,6 +14,7 @@ import {
 } from "@/utils/categoryColours";
 import Loading from "@/components/Loader/Loading";
 import moment from "moment";
+import { calculateReadingTime } from "@/utils/readingTime";
 
 interface BlogProps {
   feed: any;
@@ -56,7 +57,12 @@ const Blog: React.FC<BlogProps> = (props) => {
             height={200}
           />
           <div className="blog-item-text">
-            <div className="blog-title">{toTitleCase(blog.title)}</div>
+            <div className="blog-title">
+              {toTitleCase(blog.title)}
+              <div className="blog-reading-time">
+                {calculateReadingTime(blog.content)}
+              </div>
+            </div>
             <div className="blog-description">
               {toTitleCase(blog.meta_description)}
             </div>
