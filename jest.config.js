@@ -24,7 +24,7 @@ const config = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@utils/(.*)$": "<rootDir>/src/utils/$1",
-    "^react-markdown$": "<rootDir>/src/utils/tests/mockReactMarkdown.tsx",
+    "^react-markdown$": "<rootDir>/src/utils/tests/mocks/mockReactMarkdown.tsx",
   },
 };
 

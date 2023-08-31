@@ -1,6 +1,6 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { mockPortfolioUseRouter } from "@utils/tests/mockUseRouter";
+import { mockPortfolioUseRouter } from "@utils/tests/mocks/mockUseRouter";
 import PortfolioItem from "../[portfolioId]";
 import { mockPortfolio } from "@/utils/constants/mockPortfolio";
 
