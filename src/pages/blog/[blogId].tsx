@@ -11,7 +11,8 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import moment from "moment";
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from "react-markdown";
+import { calculateReadingTime } from "@/utils/readingTime";
 
 const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
   let {
@@ -46,7 +47,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
         ))}
       </div>
     );
-  }
+  };
 
   return (
     <div className="container text-center">
@@ -59,12 +60,16 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
       </button>
       <div>
         <h1 className="blog-detail-title">{title}</h1>
+        <div
+          className="blog-reading-time"
+          style={{ marginLeft: "auto", marginRight: "auto" }}
+        >
+          {calculateReadingTime(blog.content)}
+        </div>
         <i>{moment(created_at).format("MMMM Do YYYY")}</i>
       </div>
       <Image
-        src={
-          `/images/${image}.png` || "https://placehold.co/300x200/png"
-        }
+        src={`/images/${image}.png` || "https://placehold.co/300x200/png"}
         alt={title}
         className="portfolio-image"
         width={300}
@@ -75,9 +80,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
         }}
       />
       <div className="react-markdown-wrapper">
-        <ReactMarkdown>
-          {content}
-        </ReactMarkdown>
+        <ReactMarkdown>{content}</ReactMarkdown>
       </div>
       <div>{renderTags(tags)}</div>
     </div>
