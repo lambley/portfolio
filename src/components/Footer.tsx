@@ -1,7 +1,11 @@
 import React from "react";
 import VisitorCounter from "./VisitorCounter";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLinkedin, faGithub, faInstagram } from "@fortawesome/free-brands-svg-icons";
+import {
+  faLinkedin,
+  faSquareGithub,
+  faSquareInstagram,
+} from "@fortawesome/free-brands-svg-icons";
 
 const Footer = (): JSX.Element => {
   return (
@@ -14,7 +18,7 @@ const Footer = (): JSX.Element => {
             target="_blank"
             aria-label="Go to my GitHub"
           >
-            <FontAwesomeIcon icon={faGithub} />
+            <FontAwesomeIcon icon={faSquareGithub} />
           </a>
           <a
             href="https://www.linkedin.com/in/aaron-lambley-35671b124/"
@@ -23,12 +27,13 @@ const Footer = (): JSX.Element => {
           >
             <FontAwesomeIcon icon={faLinkedin} />
           </a>
+
           <a
             href="https://www.instagram.com/maya_the_collie_cross/"
             target="_blank"
             aria-label="Go to my Instagram"
           >
-            <FontAwesomeIcon icon={faInstagram} />
+            <FontAwesomeIcon icon={faSquareInstagram} />
           </a>
         </div>
         <span className="footer-text">
