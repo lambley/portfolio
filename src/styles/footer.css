@@ -26,6 +26,24 @@
   padding: 8px 36px;
 }
 
+.footer-socials {
+  gap: 8px;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  font-size: x-large;
+}
+
+.footer-socials a {
+  color: var(--text-color);
+}
+
+.footer-socials a:hover {
+  color: var(--cta);
+}
+
 .footer-text {
   font-size: 1rem;
   margin-bottom: 0px;
