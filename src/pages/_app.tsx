@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
 import ThemeToggle from "../components/ThemeToggle";
-import { Analytics } from "@vercel/analytics/react";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [theme, setTheme] = useState("light");

@@ -40,7 +40,7 @@
 .mobile-headline-element {
   list-style: none;
   /* this is the same as H3 font styles */
-  font-size: calc(1.3rem + .6vw);
+  font-size: calc(1.3rem + 0.6vw);
   font-weight: 600;
   line-height: 1.2;
   margin: 0;

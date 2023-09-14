@@ -1,19 +1,14 @@
 import React from "react";
 import axios from "axios";
-import apiUrl from "@/utils/apiConfig";
 import Link from "next/link";
 import Image from "next/image";
 import { GetStaticProps } from "next";
-import { BlogType, PortfolioType } from "../../../custom";
+import moment from "moment";
+import { BlogType } from "../../../custom";
 import { notFoundBlog } from "@/utils/constants/notFoundTypes";
 import { toTitleCase } from "@/utils/stringUtils";
-import {
-  getAllCategoryColours,
-  getCategoryColour,
-  getCategoryIcon,
-} from "@/utils/categoryColours";
-import Loading from "@/components/Loader/Loading";
-import moment from "moment";
+import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
+import apiUrl from "@/utils/apiConfig";
 import { calculateReadingTime } from "@/utils/readingTime";
 
 interface BlogProps {

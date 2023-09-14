@@ -1,19 +1,19 @@
 import React from "react";
 import axios from "axios";
-import apiUrl from "@/utils/apiConfig";
-import { BlogType, BlogItemProps } from "../../../custom";
-import { notFoundBlog } from "@/utils/constants/notFoundTypes";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
-import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import moment from "moment";
 import ReactMarkdown from "react-markdown";
-import { calculateReadingTime } from "@/utils/readingTime";
 import Head from "next/head";
+import { BlogType, BlogItemProps } from "../../../custom";
+import { notFoundBlog } from "@/utils/constants/notFoundTypes";
+import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
+import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
+import { calculateReadingTime } from "@/utils/readingTime";
+import apiUrl from "@/utils/apiConfig";
 
 const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
   let {
