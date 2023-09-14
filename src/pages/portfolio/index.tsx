@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import apiUrl from "@/utils/apiConfig";
 import Link from "next/link";
 import Image from "next/image";
 import { GetStaticProps } from "next";
@@ -11,6 +10,7 @@ import {
   getAllCategoryColours,
   getCategoryIcon,
 } from "@/utils/categoryColours";
+import apiUrl from "@/utils/apiConfig";
 
 interface PortfolioProps {
   feed: any;
