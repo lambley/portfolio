@@ -26,8 +26,12 @@ const HomePage = (): JSX.Element => {
     if (isMobile) {
       return (
         <ul className="mobile-headline-wrapper">
-          <li className="text-center mobile-headline-element">Fullstack Developer 💻</li>
-          <li className="text-center mobile-headline-element">Web-Dev Enthusiast 🌐</li>
+          <li className="text-center mobile-headline-element">
+            Fullstack Developer 💻
+          </li>
+          <li className="text-center mobile-headline-element">
+            Web-Dev Enthusiast 🌐
+          </li>
           <li className="text-center mobile-headline-element">Bookworm 📚</li>
           <li className="text-center mobile-headline-element">Dog Lover 🐶</li>
         </ul>
@@ -52,7 +56,7 @@ const HomePage = (): JSX.Element => {
       />
 
       <div className="d-flex align-items-center flex-column">
-        <div className="border-0 rounded-circle overflow-hidden me-3 my-3">
+        <div className="border-0 rounded-circle overflow-hidden me-3 my-3 fade-in">
           <Image
             src="/images/aaron.png"
             alt="Aaron"
@@ -76,19 +80,22 @@ const HomePage = (): JSX.Element => {
               <FontAwesomeIcon icon={faFile} bounce={isHovered} />
             </a>
           </div>
-          <p className="text-center">
-            Experienced Ruby on Rails and JavaScript developer skilled in
-            startup and technical consultancy settings, and well-practiced at
-            working within agile methodology environments.
-          </p>
-          <p className="text-center">
-            Formerly, specialized in non-fiction publishing with a focus on
-            physical and digital sales, including ecommerce and data analytics.
-          </p>
-          <p className="text-center">
-            Currently learning 🌱 Next.js framework, and CI/CD with GitHub
-            actions and Vercel.
-          </p>
+          <div className="fade-in">
+            <p className="text-center">
+              Experienced Ruby on Rails and JavaScript developer skilled in
+              startup and technical consultancy settings, and well-practiced at
+              working within agile methodology environments.
+            </p>
+            <p className="text-center">
+              Formerly, specialized in non-fiction publishing with a focus on
+              physical and digital sales, including ecommerce and data
+              analytics.
+            </p>
+            <p className="text-center">
+              Currently learning 🌱 Next.js framework, and CI/CD with GitHub
+              actions and Vercel.
+            </p>
+          </div>
         </div>
       </div>
     </Container>
