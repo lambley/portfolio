@@ -11,6 +11,8 @@ const colourMap: CategoryColourMap = {
   Typescript: "#007ACC",
   Frontend: "#FFA500",
   Backend: "#FF6347",
+  GitHub: "#181717",
+  DevOps: "#6A0572",
 };
 
 const iconMap: CategoryColourMap = {
@@ -22,6 +24,8 @@ const iconMap: CategoryColourMap = {
   Typescript: "devicon-typescript-plain",
   Frontend: "devicon-html5-plain",
   Backend: "devicon-nodejs-plain",
+  GitHub: "devicon-github-original",
+  DevOps: "devicon-docker-plain",
 };
 
 function getCategoryColour(category: string): string {
