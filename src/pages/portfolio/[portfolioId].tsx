@@ -1,16 +1,16 @@
 import React from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretLeft } from "@fortawesome/free-solid-svg-icons";
 import { GetStaticProps, GetStaticPaths } from "next";
-import Image from "next/image";
+import axios from "axios";
+import moment from "moment";
 import { PortfolioType, PortfolioItemProps } from "../../../custom";
 import { notFoundPortfolio } from "@/utils/constants/notFoundTypes";
 import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
-import axios from "axios";
-import apiUrl from "@/utils/apiConfig";
-import moment from "moment";
 import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
+import apiUrl from "@/utils/apiConfig";
 
 const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
   let { id, title, description, image, category, created_at, updated_at } =
