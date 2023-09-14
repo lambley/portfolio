@@ -30,9 +30,18 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Aaron&apos;s Portfolio</title>
         <meta
           name="description"
-          content="Aaron Lambley - Fullstack Developer - Ruby on Rails, React, Nextjs, Python"
+          content="Aaron Lambley - Fullstack Developer - Ruby on Rails, React, Next.js, Python"
+        />
+        <meta property="og:title" content="Aaron Lambley - Fullstack Developer" />
+        <meta
+          property="og:description"
+          content="Fullstack Developer - Ruby on Rails, React, Next.js, Python"
         />
         <meta property="og:image" content="/images/ogimage.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content="https://www.agslambley.dev/" />
+        <meta property="og:type" content="website" />
         <link rel="icon" href="/favicon.ico" />
         <link
           rel="icon"
