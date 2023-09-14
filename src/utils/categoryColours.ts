@@ -11,8 +11,8 @@ const colourMap: CategoryColourMap = {
   Typescript: "#007ACC",
   Frontend: "#FFA500",
   Backend: "#FF6347",
-  GitHub: "#181717",
-  DevOps: "#6A0572",
+  GitHub: "#bcbdd8",
+  DevOps: "#a516b0",
 };
 
 const iconMap: CategoryColourMap = {
