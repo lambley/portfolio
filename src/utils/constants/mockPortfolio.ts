@@ -72,7 +72,7 @@ const mockBlogList: BlogType[] = [
     meta_description: "Test meta description",
     status: "published",
     tags: ["Tag 1", "Tag 2"],
-  },
+  }
 ];
 
 export { mockPortfolioList, mockPortfolio, mockBlogList, mockBlog };

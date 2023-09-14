@@ -94,9 +94,13 @@ export const getStaticProps: GetStaticProps = async () => {
       return dateB - dateA;
     });
 
+    const publishedFeed = sortedFeed.filter(
+      (blog: BlogType) => blog.status === "published"
+    );
+
     return {
       props: {
-        feed: sortedFeed,
+        feed: publishedFeed,
       },
       revalidate: 10,
     };
