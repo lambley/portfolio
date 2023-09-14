@@ -13,6 +13,7 @@ import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 import moment from "moment";
 import ReactMarkdown from "react-markdown";
 import { calculateReadingTime } from "@/utils/readingTime";
+import Head from "next/head";
 
 const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
   let {
@@ -49,8 +50,24 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
     );
   };
 
+  const meta = {
+    title: blog.meta_title || blog.title,
+    description: blog.meta_description || blog.content.substring(0, 150),
+    image: `/images/${blog.image}.png` || "/images/aaron.png",
+  };
+
   return (
     <div className="container text-center">
+      <Head>
+        <title>{meta.title}</title>
+        <meta name="description" content={meta.description} />
+        <meta property="og:title" content={meta.title} />
+        <meta property="og:description" content={meta.description} />
+        <meta property="og:image" content={meta.image} />
+        <meta name="twitter:title" content={meta.title} />
+        <meta name="twitter:description" content={meta.description} />
+        <meta name="twitter:image" content={meta.image} />
+      </Head>
       <button
         className="portfolio-back-button"
         aria-label="back button"
