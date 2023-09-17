@@ -13,6 +13,7 @@
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: nowrap;
+  z-index: 100;
 }
 
 .navbar-left {
