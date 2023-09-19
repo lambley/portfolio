@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
 import dynamic from "next/dynamic";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
+import apiUrl from "@/utils/apiConfig";
+import axios from "axios";
 
 type FormValues = {
   name: string;
@@ -21,10 +23,32 @@ const ContactForm = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<FormValues>();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    setSubmitting(true);
+    try {
+      const params = new URLSearchParams();
+      params.append("name", data.name);
+      params.append("from", data.email);
+      params.append("message", data.message);
+
+      const response = await axios.post(`${apiUrl}/api/v1/contacts?${params.toString()}`);
+      if (response.status === 200) {
+        setMessage(response.data.message);
+        reset();
+      } else {
+        setMessage("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      setMessage("Something went wrong. Please try again later.");
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const handleCaptchaChange = (value: string | any) => {
@@ -89,8 +113,9 @@ const ContactForm = () => {
               </Form.Group>
             )}
             <Button variant="primary" type="submit">
-              Send Message
+              {submitting ? "Submitting..." : "Send Message"}
             </Button>
+            {message && <p className="mt-2">{message}</p>}
           </Form>
         </Col>
       </Row>
