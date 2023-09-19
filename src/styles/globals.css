@@ -12,6 +12,7 @@
 @import "markdown.css";
 @import "blog.css";
 @import "animations.css";
+@import "contact.css";
 
 /* External styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";
