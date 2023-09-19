@@ -60,6 +60,7 @@ const ContactForm = () => {
       params.append("name", data.name);
       params.append("from", data.email);
       params.append("message", data.message);
+      params.append("captcha", recaptchaToken);
 
       const response = await axios.post(
         `${apiUrl}/api/v1/contacts?${params.toString()}`
@@ -71,7 +72,7 @@ const ContactForm = () => {
           ?.style.setProperty("color", "green");
         reset();
       } else {
-        setMessage("Something went wrong. Please try again later.");
+        setMessage(response.data.message);
       }
     } catch (error) {
       setMessage("Something went wrong. Please try again later.");
