@@ -35,7 +35,7 @@ const ContactForm = () => {
 
   return (
     <Container className="mt-5" style={{ maxWidth: "700px" }}>
-      <Row>
+      <Row className="g-5">
         <Col xs={12} md={6} className="text-end">
           <h4>Got any questions?</h4>
           <p>
