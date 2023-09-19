@@ -92,8 +92,8 @@ const HomePage = (): JSX.Element => {
               analytics.
             </p>
             <p className="text-center">
-              Currently learning 🌱 Next.js framework, and CI/CD with GitHub
-              actions and Vercel.
+              Currently learning 🌱 Next.js, serverless functions and using
+              SendGrid for email services.
             </p>
           </div>
         </div>
