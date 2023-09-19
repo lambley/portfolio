@@ -1,0 +1,14 @@
+.message {
+  display: none;
+  text-align: center;
+  padding: 10px;
+  color: red;
+  transition: ease-in-out 1.5s all;
+  height: 1rem;
+}
+
+.message.show {
+  display: block;
+  opacity: 1;
+  height: 1rem;
+}

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
+import ContactForm from "@/components/ContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 
@@ -91,11 +92,12 @@ const HomePage = (): JSX.Element => {
               analytics.
             </p>
             <p className="text-center">
-              Currently learning 🌱 Next.js framework, and CI/CD with GitHub
-              actions and Vercel.
+              Currently learning 🌱 Next.js, serverless functions and using
+              SendGrid for email services.
             </p>
           </div>
         </div>
+        <ContactForm />
       </div>
     </Container>
   );

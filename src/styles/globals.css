@@ -12,6 +12,7 @@
 @import "markdown.css";
 @import "blog.css";
 @import "animations.css";
+@import "contact.css";
 
 /* External styles */
 @import "~bootstrap/dist/css/bootstrap.min.css";
@@ -46,6 +47,7 @@ h6 {
   top: 8px;
   right: 8px;
   position: fixed;
+  z-index: 101;
 }
 
 .theme-toggle:hover {

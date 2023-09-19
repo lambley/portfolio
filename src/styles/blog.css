@@ -39,10 +39,17 @@
   flex-grow: 1;
 }
 
+.blog-link:hover .blog-image {
+  transform: scale(1);
+  transition: transform 0.3s ease-in-out;
+}
+
 .blog-image {
   width: 100px;
   height: 100px;
   border-radius: 4px;
+  transform: scale(0.9);
+  border: black 1px solid;
 }
 
 .blog-item-text {
