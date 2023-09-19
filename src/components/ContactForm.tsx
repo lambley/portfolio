@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
 import dynamic from "next/dynamic";
@@ -26,18 +26,30 @@ const ContactForm = () => {
     reset,
   } = useForm<FormValues>();
 
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
+
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
+  const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setSubmitting(true);
+    console.log(recaptchaToken);
+
+    if (recaptchaRef.current === null || !recaptchaToken) {
+      setSubmitting(false);
+      setMessage("Please verify that you are not a robot.")
+      return;
+    }
     try {
       const params = new URLSearchParams();
       params.append("name", data.name);
       params.append("from", data.email);
       params.append("message", data.message);
 
-      const response = await axios.post(`${apiUrl}/api/v1/contacts?${params.toString()}`);
+      const response = await axios.post(
+        `${apiUrl}/api/v1/contacts?${params.toString()}`
+      );
       if (response.status === 200) {
         setMessage(response.data.message);
         reset();
@@ -48,13 +60,15 @@ const ContactForm = () => {
       setMessage("Something went wrong. Please try again later.");
     } finally {
       setSubmitting(false);
+      recaptchaRef.current?.reset();
     }
   };
 
   const handleCaptchaChange = (value: string | any) => {
-    if (value) {
-      console.log("Captcha value:", value);
+    if (!value) {
+      return;
     }
+    setRecaptchaToken(value);
   };
 
   return (
@@ -107,6 +121,7 @@ const ContactForm = () => {
             {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
               <Form.Group className="my-3">
                 <ReCAPTCHA
+                  ref={recaptchaRef}
                   sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                   onChange={handleCaptchaChange}
                 />
