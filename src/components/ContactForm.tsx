@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
 import dynamic from "next/dynamic";
@@ -32,13 +32,27 @@ const ContactForm = () => {
   const [message, setMessage] = useState<string | null>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
 
+  useEffect(() => {
+    let timeoutId: NodeJS.Timeout | null = null;
+
+    if (message) {
+      timeoutId = setTimeout(() => {
+        setMessage(null);
+      }, 3000);
+    }
+
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [message]);
+
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     setSubmitting(true);
-    console.log(recaptchaToken);
-
     if (recaptchaRef.current === null || !recaptchaToken) {
       setSubmitting(false);
-      setMessage("Please verify that you are not a robot.")
+      setMessage("Please verify that you are not a robot.");
       return;
     }
     try {
@@ -52,6 +66,9 @@ const ContactForm = () => {
       );
       if (response.status === 200) {
         setMessage(response.data.message);
+        document
+          .getElementById("confirmation-message")
+          ?.style.setProperty("color", "green");
         reset();
       } else {
         setMessage("Something went wrong. Please try again later.");
@@ -130,7 +147,14 @@ const ContactForm = () => {
             <Button variant="primary" type="submit">
               {submitting ? "Submitting..." : "Send Message"}
             </Button>
-            {message && <p className="mt-2">{message}</p>}
+            <div style={{ height: "1rem" }}>
+              <p
+                className={`message ${message ? "show" : ""}`}
+                id="confirmation-message"
+              >
+                {message}
+              </p>
+            </div>
           </Form>
         </Col>
       </Row>
