@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import ReCAPTCHA from "react-google-recaptcha";
+import dynamic from "next/dynamic";
 
 type FormValues = {
   name: string;
@@ -9,7 +10,11 @@ type FormValues = {
   captcha: string;
 };
 
-export const ContactForm = () => {
+const DynamicRecaptcha = dynamic(() => import("react-google-recaptcha"), {
+  ssr: false,
+});
+
+const ContactForm = () => {
   const {
     register,
     handleSubmit,
@@ -54,13 +59,17 @@ export const ContactForm = () => {
         ></textarea>
         {errors.message && <p>{errors.message.message}</p>}
       </div>
-      <div>
-        <ReCAPTCHA
-          sitekey={process.env.REACT_APP_RECAPTCHA_SITE_KEY!}
-          onChange={handleCaptchaChange}
-        />
-      </div>
+      {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
+        <div>
+          <ReCAPTCHA
+            sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+            onChange={handleCaptchaChange}
+          />
+        </div>
+      )}
       <button type="submit">Submit</button>
     </form>
   );
 };
+
+export default ContactForm;

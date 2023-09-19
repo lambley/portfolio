@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
+import ContactForm from "@/components/ContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 
@@ -96,6 +97,7 @@ const HomePage = (): JSX.Element => {
             </p>
           </div>
         </div>
+        <ContactForm />
       </div>
     </Container>
   );
