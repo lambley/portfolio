@@ -7,7 +7,8 @@ This is my portfolio website. It is a Next.js app, deployed on Vercel.
 - Made with
   - Next.js,
   - Bootstrap and custom CSS,
-  - React & TypeScript.
+  - React & TypeScript, React-Hook-Form.
+  - reCAPTCHA
 - Testing with Jest and React Testing Library.
 - Database/API - Ruby on Rails API that controls Portfolio, Blog (WIP) and other data.
 
