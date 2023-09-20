@@ -6,6 +6,8 @@
   --button-text-color: #ffffff;
   --cta: #007acc;
   --cta-hover: #007acc;
+  --light-cta: #007acc;
+  --dark-cta: #a05ee6;
   --font-mono: "Fira Code", monospace;
   --font-sans: "Fira Sans", sans-serif;
   --navbar-height: 60px;

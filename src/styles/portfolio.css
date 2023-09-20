@@ -99,3 +99,19 @@
 .portfolio-detail-category i {
   margin-left: 4px;
 }
+
+@media screen and (max-width: 768px) {
+  .portfolio-detail-category {
+    font-size: 0.75rem;
+  }
+}
+
+.portfolio-sort-options {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
