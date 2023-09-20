@@ -6,7 +6,7 @@ import { mockPortfolioList } from "@/utils/constants/mockPortfolio";
 describe("Portfolio", () => {
   it("renders the portfolio page", () => {
     render(<Portfolio feed={mockPortfolioList} />);
-    const portfolioHeader = screen.getByText("Portfolio List");
+    const portfolioHeader = screen.getByText("My Projects");
 
     expect(portfolioHeader).toBeInTheDocument();
   });

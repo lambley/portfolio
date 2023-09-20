@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
@@ -11,13 +11,28 @@ import {
   getCategoryIcon,
 } from "@/utils/categoryColours";
 import apiUrl from "@/utils/apiConfig";
+import ToggleSwitch from "@/components/ToggleSwitch";
 
 interface PortfolioProps {
   feed: any;
 }
 
 const Portfolio: React.FC<PortfolioProps> = (props) => {
-  const { feed } = props;
+  const [feed, setFeed] = useState(props.feed);
+  const [sortByDateNewest, setSortByDateNewest] = useState<boolean>(true);
+
+  useEffect(() => {
+    sortFeed();
+  }, [sortByDateNewest]);
+
+  const sortFeed = () => {
+    const sortedFeed = feed.sort((a: PortfolioType, b: PortfolioType) => {
+      const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+      const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+      return sortByDateNewest ? dateB - dateA : dateA - dateB;
+    });
+    setFeed([...sortedFeed]);
+  };
 
   const renderPortfolioList = () => {
     return feed.map((portfolio: PortfolioType) => (
@@ -65,10 +80,19 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
 
   return (
     <div className="container text-center">
-      <h1>Portfolio List</h1>
-      <h2>Technologies</h2>
+      <h1>My Projects</h1>
+      <h2>Technologies I have used</h2>
       <div className="portfolio-details-categories-list">
         {renderAllCategories()}
+      </div>
+      <div className="portfolio-sort-options">
+        <ToggleSwitch
+          sortFunction={setSortByDateNewest}
+          sortState={sortByDateNewest}
+          toggleTextOn="Newest"
+          toggleTextOff="Oldest"
+          ariaLabel="sort portfolio by date"
+        />
       </div>
       <div className="portfolio-list mb-3">{renderPortfolioList()}</div>
     </div>
@@ -81,16 +105,9 @@ export const getStaticProps: GetStaticProps = async () => {
   try {
     const feed = await axios.get(`${apiUrl}/api/v1/portfolios`);
 
-    // sort portfolio feed by date by default
-    const sortedFeed = feed.data.sort((a: PortfolioType, b: PortfolioType) => {
-      const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
-      const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
-      return dateB - dateA;
-    });
-
     return {
       props: {
-        feed: sortedFeed,
+        feed: feed.data,
       },
       revalidate: 10,
     };
