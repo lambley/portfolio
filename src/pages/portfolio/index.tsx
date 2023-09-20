@@ -90,6 +90,7 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
         sortState={sortByDateNewest}
         toggleTextOn="Newest"
         toggleTextOff="Oldest"
+        ariaLabel="sort portfolio by date"
       />
       <div className="portfolio-list mb-3">{renderPortfolioList()}</div>
     </div>
