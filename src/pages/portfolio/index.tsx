@@ -11,6 +11,7 @@ import {
   getCategoryIcon,
 } from "@/utils/categoryColours";
 import apiUrl from "@/utils/apiConfig";
+import ToggleSwitch from "@/components/ToggleSwitch/ToggleSwitch";
 
 interface PortfolioProps {
   feed: any;
@@ -84,14 +85,12 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
       <div className="portfolio-details-categories-list">
         {renderAllCategories()}
       </div>
-      <button
-        className="sort-button"
-        onClick={() => {
-          setSortByDateNewest(!sortByDateNewest);
-        }}
-      >
-        {sortByDateNewest ? "Newest" : "Oldest"}
-      </button>
+      <ToggleSwitch
+        sortFunction={setSortByDateNewest}
+        sortState={sortByDateNewest}
+        toggleTextOn="Newest"
+        toggleTextOff="Oldest"
+      />
       <div className="portfolio-list mb-3">{renderPortfolioList()}</div>
     </div>
   );
