@@ -31,7 +31,7 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
       const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
       return sortByDateNewest ? dateB - dateA : dateA - dateB;
     });
-    setFeed(sortedFeed);
+    setFeed([...sortedFeed]);
   };
 
   const renderPortfolioList = () => {
@@ -80,8 +80,8 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
 
   return (
     <div className="container text-center">
-      <h1>Portfolio List</h1>
-      <h2>Technologies</h2>
+      <h1>My Projects</h1>
+      <h2>Technologies I have used</h2>
       <div className="portfolio-details-categories-list">
         {renderAllCategories()}
       </div>

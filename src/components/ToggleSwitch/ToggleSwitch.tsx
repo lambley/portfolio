@@ -19,6 +19,7 @@ const ToggleSwitch: React.FC<ToggleSwitchProps> = (props) => {
           onChange={() => {
             sortFunction(!sortState);
           }}
+          checked={sortState}
         />
         <span className="slider round"></span>
       </label>
