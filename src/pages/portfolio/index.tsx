@@ -85,13 +85,15 @@ const Portfolio: React.FC<PortfolioProps> = (props) => {
       <div className="portfolio-details-categories-list">
         {renderAllCategories()}
       </div>
-      <ToggleSwitch
-        sortFunction={setSortByDateNewest}
-        sortState={sortByDateNewest}
-        toggleTextOn="Newest"
-        toggleTextOff="Oldest"
-        ariaLabel="sort portfolio by date"
-      />
+      <div className="portfolio-sort-options">
+        <ToggleSwitch
+          sortFunction={setSortByDateNewest}
+          sortState={sortByDateNewest}
+          toggleTextOn="Newest"
+          toggleTextOff="Oldest"
+          ariaLabel="sort portfolio by date"
+        />
+      </div>
       <div className="portfolio-list mb-3">{renderPortfolioList()}</div>
     </div>
   );
