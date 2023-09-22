@@ -75,6 +75,8 @@ h6 {
   --markdown-background-color: #eff2ff;
   --markdown-text-color: #000000;
   --blog-hover-background-color: #161b22;
+  --navbar-scrolled-background-color: rgba(0, 0, 0, 0.85);
+  --navbar-scrolled-text-color: #ffffff;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -90,6 +92,8 @@ h6 {
   --markdown-background-color: #161b22;
   --markdown-text-color: #ffffff;
   --blog-hover-background-color: #eff2ff;
+  --navbar-scrolled-background-color: rgba(190, 190, 190, 0.85);
+  --navbar-scrolled-text-color: #000000;
   background-color: var(--background-color);
   color: var(--text-color);
 }

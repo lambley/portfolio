@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
@@ -12,9 +12,26 @@ const Navigation: React.FC<NavigationProps> = ({
   theme,
   children,
 }: NavigationProps) => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY >= 60) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <>
-      <div className="custom-navbar">
+      <div className={`custom-navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="navbar-left">
           <Link className="navbar-link" href="/" aria-label="Home">
             <FontAwesomeIcon icon={faHouse} />

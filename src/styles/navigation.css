@@ -14,6 +14,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   z-index: 100;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .navbar-left {
@@ -48,4 +49,30 @@
   border-bottom: 1px solid var(--cta);
   transition: border-bottom 0.5s ease-in-out;
   transform: translateY(-4px);
+}
+
+.scrolled {
+  width: 80%;
+  background-color: var(--navbar-scrolled-background-color);
+  border: var(--text-color) solid 1px;
+  border-radius: 24px;
+  top: initial;
+  bottom: 16px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  .navbar-link {
+    color: var(--navbar-scrolled-text-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .custom-navbar {
+    padding: 8px 8px;
+  }
+  .navbar-right {
+    padding-right: 8px;
+  }
+  .navbar-link {
+    font-size: 1.2rem;
+  }
 }
