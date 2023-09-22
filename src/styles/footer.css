@@ -11,10 +11,15 @@
   width: 100%;
   position: relative;
   min-height: var(--footer-height);
-  height: var(--footer-height);
-  height: auto;
+  height: calc(var(--footer-height) + 32px + var(--navbar-height));
   margin-top: auto;
   z-index: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .footer {
+    height: calc(var(--footer-height) + 96px + var(--navbar-height));
+  }
 }
 
 .footer-content {
