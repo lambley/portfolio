@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
 
 type NavigationProps = {
+  theme: string;
   children: React.ReactNode;
 };
 
 const Navigation: React.FC<NavigationProps> = ({
+  theme,
   children,
 }: NavigationProps) => {
   return (

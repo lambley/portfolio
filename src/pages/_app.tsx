@@ -64,7 +64,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <div className={`${theme}-theme`}>
-        <Layout>
+        <Layout theme={theme}>
           <ThemeToggle theme={theme} onToggle={toggleTheme} />
           <Component {...pageProps} />
         </Layout>
