@@ -42,6 +42,8 @@ const Navigation: React.FC<NavigationProps> = ({
       <button
         className={`top-arrow ${scrolled ? "show" : "hide"}`}
         onClick={() => backToTop()}
+        aria-label="Back to top"
+        id="back-to-top"
       >
         <FontAwesomeIcon icon={faArrowUp} />
       </button>
