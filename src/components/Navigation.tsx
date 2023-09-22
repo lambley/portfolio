@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faHouse, faArrowUp } from "@fortawesome/free-solid-svg-icons";
 import ThemeToggle from "../components/ThemeToggle";
 
 type NavigationProps = {
@@ -32,8 +32,19 @@ const Navigation: React.FC<NavigationProps> = ({
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+
+  const backToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
     <>
+      <button
+        className={`top-arrow ${scrolled ? "show" : "hide"}`}
+        onClick={() => backToTop()}
+      >
+        <FontAwesomeIcon icon={faArrowUp} />
+      </button>
       <div className={`custom-navbar ${scrolled ? "scrolled" : ""}`}>
         <div className="navbar-left">
           <Link className="navbar-link" href="/" aria-label="Home">
