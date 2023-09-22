@@ -4,16 +4,12 @@ import ToggleSwitch from "../ToggleSwitch";
 
 describe("ToggleSwitch", () => {
   const toggleSwitchProps = {
-    sortFunction: jest.fn(),
+    sortFunction: jest.fn((currentState) => !currentState),
     sortState: true,
     toggleTextOn: "On",
     toggleTextOff: "Off",
     ariaLabel: "toggle-switch",
   };
-
-  toggleSwitchProps.sortFunction.mockImplementation(
-    (currentState) => !currentState
-  );
 
   it("renders the toggle switch", () => {
     render(<ToggleSwitch {...toggleSwitchProps} />);
@@ -27,5 +23,23 @@ describe("ToggleSwitch", () => {
     const toggleSwitch = screen.getByLabelText(toggleSwitchProps.ariaLabel);
 
     expect(toggleSwitch).toHaveTextContent(toggleSwitchProps.toggleTextOn);
+  });
+
+  it("calls the sort function when the toggle switch is clicked", async () => {
+    render(<ToggleSwitch {...toggleSwitchProps} />);
+    const toggleSwitchLabel = screen.getByLabelText(
+      `${toggleSwitchProps.ariaLabel} label`
+    );
+
+    fireEvent.click(toggleSwitchLabel);
+
+    await waitFor(() => {
+      const spyOn = jest.spyOn(toggleSwitchProps, "sortFunction");
+      expect(spyOn).toHaveBeenCalled();
+      expect(spyOn).toHaveBeenCalledTimes(1);
+
+      const call = spyOn.mock.calls[0];
+      expect(call[0]).toBe(!toggleSwitchProps.sortState);
+    });
   });
 });
