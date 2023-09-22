@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,13 +10,28 @@ import { toTitleCase } from "@/utils/stringUtils";
 import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
 import apiUrl from "@/utils/apiConfig";
 import { calculateReadingTime } from "@/utils/readingTime";
+import ToggleSwitch from "@/components/ToggleSwitch";
 
 interface BlogProps {
   feed: any;
 }
 
 const Blog: React.FC<BlogProps> = (props) => {
-  const { feed } = props;
+  const [feed, setFeed] = useState(props.feed);
+  const [sortByDateNewest, setSortByDateNewest] = useState<boolean>(true);
+
+  useEffect(() => {
+    sortFeed();
+  }, [sortByDateNewest]);
+
+  const sortFeed = () => {
+    const sortedFeed = feed.sort((a: BlogType, b: BlogType) => {
+      const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
+      const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
+      return sortByDateNewest ? dateB - dateA : dateA - dateB;
+    });
+    setFeed([...sortedFeed]);
+  };
 
   const renderBlogTagsList = (tags: string[]) => {
     return (
@@ -76,6 +91,13 @@ const Blog: React.FC<BlogProps> = (props) => {
   return (
     <div className="container text-center">
       <h1>Blog</h1>
+      <ToggleSwitch
+        sortFunction={setSortByDateNewest}
+        sortState={sortByDateNewest}
+        toggleTextOn="Newest"
+        toggleTextOff="Oldest"
+        ariaLabel="sort blog posts by date"
+      />
       <div className="blog-list">{renderBlogList()}</div>
     </div>
   );
@@ -87,14 +109,7 @@ export const getStaticProps: GetStaticProps = async () => {
   try {
     const feed = await axios.get(`${apiUrl}/api/v1/blogs`);
 
-    // sort blog feed by date by default
-    const sortedFeed = feed.data.sort((a: BlogType, b: BlogType) => {
-      const dateA = a.created_at ? new Date(a.created_at).getTime() : 0;
-      const dateB = b.created_at ? new Date(b.created_at).getTime() : 0;
-      return dateB - dateA;
-    });
-
-    const publishedFeed = sortedFeed.filter(
+    const publishedFeed = feed.data.filter(
       (blog: BlogType) => blog.status === "published"
     );
 
