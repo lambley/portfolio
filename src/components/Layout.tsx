@@ -4,13 +4,14 @@ import Footer from "./Footer";
 
 type LayoutProps = {
   theme: string;
+  onToggle: () => void;
 };
 
-const Layout = ({ children, theme }: PropsWithChildren<LayoutProps>) => {
+const Layout = ({ children, theme, onToggle }: PropsWithChildren<LayoutProps>) => {
   return (
     <>
       <div className="layout-wrapper">
-        <Navigation theme={theme}>
+        <Navigation theme={theme} onToggle={onToggle}>
           <div className="content-container">{children}</div>
         </Navigation>
         <Footer />

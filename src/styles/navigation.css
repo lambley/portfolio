@@ -63,6 +63,9 @@
   .navbar-link {
     color: var(--navbar-scrolled-text-color);
   }
+  .theme-toggle {
+    color: var(--navbar-scrolled-text-color);
+  }
 }
 
 @media (max-width: 768px) {

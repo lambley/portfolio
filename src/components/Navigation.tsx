@@ -2,14 +2,17 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import ThemeToggle from "../components/ThemeToggle";
 
 type NavigationProps = {
   theme: string;
+  onToggle: () => void;
   children: React.ReactNode;
 };
 
 const Navigation: React.FC<NavigationProps> = ({
   theme,
+  onToggle,
   children,
 }: NavigationProps) => {
   const [scrolled, setScrolled] = useState(false);
@@ -44,6 +47,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <Link className="navbar-link navbar-link-hover" href="/portfolio">
             Portfolio
           </Link>
+          <ThemeToggle theme={theme} onToggle={onToggle} />
         </div>
       </div>
       {children}

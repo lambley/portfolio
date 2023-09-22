@@ -4,7 +4,6 @@ import Head from "next/head";
 import { Analytics } from "@vercel/analytics/react";
 import "../styles/globals.css";
 import Layout from "../components/Layout";
-import ThemeToggle from "../components/ThemeToggle";
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -64,8 +63,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
       </Head>
       <div className={`${theme}-theme`}>
-        <Layout theme={theme}>
-          <ThemeToggle theme={theme} onToggle={toggleTheme} />
+        <Layout theme={theme} onToggle={toggleTheme}>
           <Component {...pageProps} />
         </Layout>
         <Analytics />
