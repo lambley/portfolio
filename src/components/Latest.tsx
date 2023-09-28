@@ -7,6 +7,8 @@ import {
 import axios from "axios";
 import apiUrl from "@/utils/apiConfig";
 import Loading from "./Loader/Loading";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 const Latest = () => {
   const [portfolio, setPortfolio] = useState<PortfolioType>(notFoundPortfolio);
@@ -28,24 +30,37 @@ const Latest = () => {
         setLoading(false);
       }
     };
-    setTimeout(() => {
-      fetchLatestData();
-    }, 3000);
+    fetchLatestData();
   }, []);
 
   if (loading) {
-    return <Loading />;
+    return (
+      <div className="my-3">
+        <Loading />
+      </div>
+    );
   }
 
   if (error) {
-    return <div>{error}</div>;
+    return <div className="my-3">{error}</div>;
   }
 
   return (
-    <div>
-      <h1>Latest</h1>
-      <p>{portfolio.title}</p>
-      <p>{blog.title}</p>
+    <div className="my-3">
+      <Row>
+        <Col xs={12} lg={6}>
+          <div>
+            <h2>Latest Project</h2>
+            <p>{portfolio.title}</p>
+          </div>
+        </Col>
+        <Col xs={12} lg={6}>
+          <div>
+            <h2>Latest Blog</h2>
+            <p>{blog.title}</p>
+          </div>
+        </Col>
+      </Row>
     </div>
   );
 };
