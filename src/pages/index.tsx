@@ -100,6 +100,9 @@ const HomePage = (): JSX.Element => {
         </div>
         {/* Latest blogs and projects */}
         <Latest />
+        <hr
+          style={{ border: "none", borderTop: "2px solid #ccc", width: "100%" }}
+        />
         {/* Contact form */}
         <ContactForm />
       </div>
