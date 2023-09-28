@@ -31,7 +31,7 @@ const BlogItem: React.FC<BlogItemProps> = ({ blog }) => {
   const router = useRouter();
 
   const handleBack = () => {
-    router.push("/blog");
+    router.back();
   };
 
   const renderTags = (tags: string[]) => {
