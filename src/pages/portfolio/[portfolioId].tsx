@@ -22,7 +22,7 @@ const PortfolioItem: React.FC<PortfolioItemProps> = ({ portfolio }) => {
   const router = useRouter();
 
   const handleBack = () => {
-    router.back();
+    window.history.back();
   };
 
   const renderCategories = (categories: string[]) => {
