@@ -51,6 +51,7 @@ h6 {
   --blog-hover-background-color: #161b22;
   --navbar-scrolled-background-color: rgba(0, 0, 0, 0.85);
   --navbar-scrolled-text-color: #ffffff;
+  --card-background-color: #d4d3d3;
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -68,6 +69,7 @@ h6 {
   --blog-hover-background-color: #eff2ff;
   --navbar-scrolled-background-color: rgba(190, 190, 190, 0.85);
   --navbar-scrolled-text-color: #000000;
+  --card-background-color: #2b2b2b;
   background-color: var(--background-color);
   color: var(--text-color);
 }

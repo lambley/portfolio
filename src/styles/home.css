@@ -60,11 +60,11 @@
   align-items: center;
   text-decoration: none;
   color: var(--text-color);
+  background-color: var(--card-background-color);
 }
 
 .latest-link:hover {
-  background-color: var(--hover-color);
-  transition: background-color 0.5s ease-in-out;
+
 }
 
 .latest-link-image {
