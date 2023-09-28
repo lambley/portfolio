@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
+import Latest from "@/components/Latest";
 import ContactForm from "@/components/ContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
@@ -48,13 +49,14 @@ const HomePage = (): JSX.Element => {
 
   return (
     <Container className="py-4">
+      {/* TODO: add hero banner */}
+      {/* Bio */}
       <Typewriter
         text={"Hello, it's me, Aaron 👋"}
         delay={100}
         infinite={true}
         optionalClass={["text-center", "fs-1", "fw-bold", "mb-5"]}
       />
-
       <div className="d-flex align-items-center flex-column">
         <div className="border-0 rounded-circle overflow-hidden me-3 my-3 fade-in">
           <Image
@@ -65,7 +67,6 @@ const HomePage = (): JSX.Element => {
             height={200}
           />
         </div>
-
         <div className="border rounded p-3 bio-container">
           {renderHeadline()}
           <div className="download-wrapper my-3">
@@ -97,6 +98,9 @@ const HomePage = (): JSX.Element => {
             </p>
           </div>
         </div>
+        {/* Latest blogs and projects */}
+        <Latest />
+        {/* Contact form */}
         <ContactForm />
       </div>
     </Container>
