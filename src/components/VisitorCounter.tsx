@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getVisitorCount } from "@/api/visitorCount";
-import DigitFrame from "./digitFrame";
+import DigitFrame from "./DigitFrame";
 
 const VisitorCounter = (): JSX.Element => {
   const [visitorCount, setVisitorCount] = useState(0);

@@ -104,6 +104,7 @@ const ContactForm = () => {
             alt="get in touch"
             width={300}
             height={300}
+            style={{ width: "100%", height: "auto" }}
           />
         </Col>
         <Col xs={12} md={6} className="mb-3">
@@ -142,6 +143,7 @@ const ContactForm = () => {
                   ref={recaptchaRef}
                   sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
                   onChange={handleCaptchaChange}
+                  style={{ transform: "scale(0.77)", transformOrigin: "0 0" }}
                 />
               </Form.Group>
             )}
