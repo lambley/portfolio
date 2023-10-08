@@ -6,7 +6,6 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import Image from "next/image";
 import apiUrl from "@/utils/apiConfig";
 import axios from "axios";
-import { width } from "@fortawesome/free-brands-svg-icons/fa42Group";
 
 type FormValues = {
   name: string;
