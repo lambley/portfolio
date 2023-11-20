@@ -1,11 +1,11 @@
 .layout-wrapper {
   position: relative;
-  min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .content-container {
   padding-top: calc(var(--page-margin-top) + 20px);
-  min-height: calc(100vh - var(--navbar-height) - var(--footer-height));
+  min-height: calc(100dvh - var(--navbar-height) - var(--footer-height));
 }
 
 @media (max-width: 768px) {
