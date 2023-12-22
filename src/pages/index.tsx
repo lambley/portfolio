@@ -85,7 +85,8 @@ const HomePage = (): JSX.Element => {
             <p className="text-center">
               Experienced Ruby on Rails and JavaScript developer skilled in
               startup and technical consultancy settings, and well-practiced at
-              working within agile methodology environments.
+              working within agile methodology environments. Passionate about learning 
+              and advancing my skills in fullstack development and DevOps.
             </p>
             <p className="text-center">
               Formerly, specialized in non-fiction publishing with a focus on
@@ -93,8 +94,7 @@ const HomePage = (): JSX.Element => {
               analytics.
             </p>
             <p className="text-center">
-              Currently learning 🌱 Next.js, serverless functions and using
-              SendGrid for email services.
+              Currently learning NestJS framework and using Redis and Docker.
             </p>
           </div>
         </div>
