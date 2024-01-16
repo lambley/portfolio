@@ -37,7 +37,7 @@ const Footer = (): JSX.Element => {
           </a>
         </div>
         <span className="footer-text">
-          &copy; {new Date().getFullYear()} Aaron Lambley
+          &copy; 2023 - {new Date().getFullYear()} Aaron Lambley
         </span>
       </div>
     </footer>
