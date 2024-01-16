@@ -72,7 +72,7 @@ const HomePage = (): JSX.Element => {
           <div className="download-wrapper my-3">
             <a
               className="download-cta"
-              href="https://drive.google.com/file/d/1mOkR7YZ50NLVChSfR0RUjX3N1TvHSqzo/view?usp=sharing"
+              href="https://drive.google.com/file/d/10sluVUfpXieszIOA87wpYo2d39DOmtNN/view?usp=sharing"
               onMouseOver={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               target="blank"
@@ -85,7 +85,7 @@ const HomePage = (): JSX.Element => {
             <p className="text-center">
               Experienced Ruby on Rails and JavaScript developer skilled in
               startup and technical consultancy settings, and well-practiced at
-              working within agile methodology environments. Passionate about learning 
+              working within agile methodology environments. Passionate about learning
               and advancing my skills in fullstack development and DevOps.
             </p>
             <p className="text-center">
