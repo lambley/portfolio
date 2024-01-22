@@ -1,10 +1,10 @@
-import React, { ReactNode, use } from "react";
+import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { mockPortfolioUseRouter } from "@utils/tests/mocks/mockUseRouter";
-import BlogItem from "../[blogId]";
+import BlogItem, { getStaticPaths } from "../[blogId]";
 import { mockBlog } from "@/utils/constants/mockPortfolio";
-import { mock } from "node:test";
-import { useRouter } from "next/router";
+import { GetStaticPathsContext } from "next";
+import axios from "axios";
 
 jest.mock("next/head", () => {
   return {
@@ -111,11 +111,64 @@ describe("BlogItem", () => {
 
   describe("server-side rendering", () => {
     describe("getStaticPaths", () => {
-      it("returns the correct paths", async () => {});
+      it("returns the correct paths", async () => {
+        jest.spyOn(axios, "get").mockResolvedValue({
+          data: [
+            {
+              id: 1,
+            },
+          ],
+        });
 
-      it("returns the correct paths when there are no blogs", async () => {});
+        // run getStaticPaths
+        const paths = await getStaticPaths({} as GetStaticPathsContext);
 
-      it("returns the correct paths when there is an error", async () => {});
+        // check that the paths are correct
+        expect(paths).toEqual({
+          fallback: false,
+          paths: [
+            {
+              params: {
+                blogId: "1",
+              },
+            },
+          ],
+        });
+      });
+
+      it("returns the correct paths when there are no blogs", async () => {
+        jest.spyOn(axios, "get").mockResolvedValue({
+          data: [],
+        });
+
+        // run getStaticPaths
+        const paths = await getStaticPaths({} as GetStaticPathsContext);
+
+        // check that the paths are correct
+        expect(paths).toEqual({
+          fallback: false,
+          paths: [],
+        });
+      });
+
+      it("returns the correct paths when there is an error", async () => {
+        jest.spyOn(axios, "get").mockRejectedValue(new Error("test error"));
+
+        // run getStaticPaths
+        const paths = await getStaticPaths({} as GetStaticPathsContext);
+
+        // check that the paths are correct
+        expect(paths).toEqual({
+          fallback: false,
+          paths: [
+            {
+              params: {
+                blogId: "0",
+              },
+            },
+          ],
+        });
+      });
     });
   });
 });
