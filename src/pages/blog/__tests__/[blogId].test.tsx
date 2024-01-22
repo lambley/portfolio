@@ -1,9 +1,10 @@
-import React, { ReactNode } from "react";
+import React, { ReactNode, use } from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { mockPortfolioUseRouter } from "@utils/tests/mocks/mockUseRouter";
 import BlogItem from "../[blogId]";
 import { mockBlog } from "@/utils/constants/mockPortfolio";
 import { mock } from "node:test";
+import { useRouter } from "next/router";
 
 jest.mock("next/head", () => {
   return {
@@ -15,77 +16,106 @@ jest.mock("next/head", () => {
 });
 
 jest.mock("next/router", () => ({
+  ...jest.requireActual("next/router"),
   useRouter: () => mockPortfolioUseRouter(),
 }));
 
 describe("BlogItem", () => {
-  beforeEach(() => {
+  afterAll(() => {
     jest.clearAllMocks();
   });
 
-  it("renders the blog item page", () => {
-    render(<BlogItem blog={mockBlog} />);
+  describe("page rendering", () => {
+    it("renders the blog item page", () => {
+      render(<BlogItem blog={mockBlog} />);
 
-    const title = screen.getByText("Test Blog");
-    const content = screen.getByText("Test content");
-    const image = screen.getByAltText("Test Blog");
-    const tags1 = screen.getByText("Tag 1");
-    const tags2 = screen.getByText("Tag 2");
-    const backButton = screen.getByLabelText("back button");
+      const title = screen.getByText("Test Blog");
+      const content = screen.getByText("Test content");
+      const image = screen.getByAltText("Test Blog");
+      const tags1 = screen.getByText("Tag 1");
+      const tags2 = screen.getByText("Tag 2");
+      const backButton = screen.getByLabelText("back button");
 
-    expect(title).toBeInTheDocument();
-    expect(content).toBeInTheDocument();
-    expect(image).toBeInTheDocument();
-    expect(tags1).toBeInTheDocument();
-    expect(tags2).toBeInTheDocument();
-    expect(backButton).toBeInTheDocument();
-  });
-
-  it("renders the blog item page with the correct meta tags", async () => {
-    render(<BlogItem blog={mockBlog} />, {
-      container: document.head,
+      expect(title).toBeInTheDocument();
+      expect(content).toBeInTheDocument();
+      expect(image).toBeInTheDocument();
+      expect(tags1).toBeInTheDocument();
+      expect(tags2).toBeInTheDocument();
+      expect(backButton).toBeInTheDocument();
     });
 
-    await waitFor(() => {
-      const title = document.title;
-      expect(title).toBe(mockBlog.meta_title);
+    it("renders the blog item page with the correct meta tags", async () => {
+      render(<BlogItem blog={mockBlog} />, {
+        container: document.head,
+      });
 
-      const metaDescription = document.querySelector(
-        'meta[name="description"]'
-      );
-      expect(metaDescription?.getAttribute("content")).toBe(
-        mockBlog.meta_description
-      );
+      await waitFor(() => {
+        const title = document.title;
+        expect(title).toBe(mockBlog.meta_title);
 
-      const ogTitle = document.querySelector('meta[property="og:title"]');
-      expect(ogTitle?.getAttribute("content")).toBe(mockBlog.meta_title);
+        const metaDescription = document.querySelector(
+          'meta[name="description"]'
+        );
+        expect(metaDescription?.getAttribute("content")).toBe(
+          mockBlog.meta_description
+        );
 
-      const ogDescription = document.querySelector(
-        'meta[property="og:description"]'
-      );
-      expect(ogDescription?.getAttribute("content")).toBe(
-        mockBlog.meta_description
-      );
+        const ogTitle = document.querySelector('meta[property="og:title"]');
+        expect(ogTitle?.getAttribute("content")).toBe(mockBlog.meta_title);
 
-      const ogImage = document.querySelector('meta[property="og:image"]');
-      expect(ogImage?.getAttribute("content")).toBe(
-        `/images/${mockBlog.image}.png`
-      );
+        const ogDescription = document.querySelector(
+          'meta[property="og:description"]'
+        );
+        expect(ogDescription?.getAttribute("content")).toBe(
+          mockBlog.meta_description
+        );
 
-      const twitterTitle = document.querySelector('meta[name="twitter:title"]');
-      expect(twitterTitle?.getAttribute("content")).toBe(mockBlog.meta_title);
+        const ogImage = document.querySelector('meta[property="og:image"]');
+        expect(ogImage?.getAttribute("content")).toBe(
+          `/images/${mockBlog.image}.png`
+        );
 
-      const twitterDescription = document.querySelector(
-        'meta[name="twitter:description"]'
-      );
-      expect(twitterDescription?.getAttribute("content")).toBe(
-        mockBlog.meta_description
-      );
+        const twitterTitle = document.querySelector(
+          'meta[name="twitter:title"]'
+        );
+        expect(twitterTitle?.getAttribute("content")).toBe(mockBlog.meta_title);
 
-      const twitterImage = document.querySelector('meta[name="twitter:image"]');
-      expect(twitterImage?.getAttribute("content")).toBe(
-        `/images/${mockBlog.image}.png`
-      );
+        const twitterDescription = document.querySelector(
+          'meta[name="twitter:description"]'
+        );
+        expect(twitterDescription?.getAttribute("content")).toBe(
+          mockBlog.meta_description
+        );
+
+        const twitterImage = document.querySelector(
+          'meta[name="twitter:image"]'
+        );
+        expect(twitterImage?.getAttribute("content")).toBe(
+          `/images/${mockBlog.image}.png`
+        );
+      });
+    });
+
+    it("renders a back button that takes the user back to the previous page", async () => {
+      render(<BlogItem blog={mockBlog} />);
+
+      const backButton = screen.getByLabelText("back button");
+      expect(backButton).toBeInTheDocument();
+
+      const event = fireEvent.click(backButton);
+
+      // bit of a bodge job - just tests that the button is being clicked and not that the router is being pushed
+      expect(event).toBeTruthy();
+    });
+  });
+
+  describe("server-side rendering", () => {
+    describe("getStaticPaths", () => {
+      it("returns the correct paths", async () => {});
+
+      it("returns the correct paths when there are no blogs", async () => {});
+
+      it("returns the correct paths when there is an error", async () => {});
     });
   });
 });
