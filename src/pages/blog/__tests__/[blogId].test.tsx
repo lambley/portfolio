@@ -1,7 +1,8 @@
 import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { mockPortfolioUseRouter } from "@utils/tests/mocks/mockUseRouter";
-import BlogItem, { getStaticPaths } from "../[blogId]";
+import BlogItem, { getStaticPaths, getStaticProps } from "../[blogId]";
+import { notFoundBlog } from "@/utils/constants/notFoundTypes";
 import { mockBlog } from "@/utils/constants/mockPortfolio";
 import { GetStaticPathsContext } from "next";
 import axios from "axios";
@@ -167,6 +168,40 @@ describe("BlogItem", () => {
               },
             },
           ],
+        });
+      });
+    });
+
+    describe("getStaticProps", () => {
+      it("returns the correct props", async () => {
+        // mock axios
+        jest.spyOn(axios, "get").mockResolvedValue({
+          data: mockBlog,
+        });
+
+        // run getStaticProps
+        const props = await getStaticProps({ params: { blogId: "1" } });
+
+        // check that the props are correct
+        expect(props).toEqual({
+          props: {
+            blog: mockBlog,
+          },
+        });
+      });
+
+      it("returns the correct props when there is an error", async () => {
+        // mock axios
+        jest.spyOn(axios, "get").mockRejectedValue(new Error("test error"));
+
+        // run getStaticProps
+        const props = await getStaticProps({ params: { blogId: "1" } });
+
+        // check that the props are correct
+        expect(props).toEqual({
+          props: {
+            blog: notFoundBlog,
+          },
         });
       });
     });
