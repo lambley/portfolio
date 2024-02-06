@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Navigation from "../Navigation";
+import Navigation from "../Header/Navigation";
 import { type } from "os";
 
 const NavigationProps = {

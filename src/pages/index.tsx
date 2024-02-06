@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Image from "next/image";
 import Typewriter from "@/components/Typewriter";
 import Latest from "@/components/Latest";
-import ContactForm from "@/components/ContactForm";
+import ContactForm from "@/components/Forms/ContactForm";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFile } from "@fortawesome/free-solid-svg-icons";
 
@@ -85,8 +85,9 @@ const HomePage = (): JSX.Element => {
             <p className="text-center">
               Experienced Ruby on Rails and JavaScript developer skilled in
               startup and technical consultancy settings, and well-practiced at
-              working within agile methodology environments. Passionate about learning
-              and advancing my skills in fullstack development and DevOps.
+              working within agile methodology environments. Passionate about
+              learning and advancing my skills in fullstack development and
+              DevOps.
             </p>
             <p className="text-center">
               Formerly, specialized in non-fiction publishing with a focus on

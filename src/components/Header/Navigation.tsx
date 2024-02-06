@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faArrowUp } from "@fortawesome/free-solid-svg-icons";
-import ThemeToggle from "../components/ThemeToggle";
+import ThemeToggle from "../Forms/ThemeToggle";
 
 type NavigationProps = {
   theme: string;

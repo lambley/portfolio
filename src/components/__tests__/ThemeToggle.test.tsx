@@ -1,6 +1,6 @@
 import React from "react";
 import { screen, render, fireEvent } from "@testing-library/react";
-import ThemeToggle from "../ThemeToggle";
+import ThemeToggle from "../Forms/ThemeToggle";
 
 describe("ThemeToggle", () => {
   // shows the moon icon when light theme is active
