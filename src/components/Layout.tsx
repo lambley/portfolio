@@ -1,13 +1,17 @@
 import React, { PropsWithChildren } from "react";
-import Navigation from "./Navigation";
-import Footer from "./Footer";
+import Navigation from "./Header/Navigation";
+import Footer from "./Footer/Footer";
 
 type LayoutProps = {
   theme: string;
   onToggle: () => void;
 };
 
-const Layout = ({ children, theme, onToggle }: PropsWithChildren<LayoutProps>) => {
+const Layout = ({
+  children,
+  theme,
+  onToggle,
+}: PropsWithChildren<LayoutProps>) => {
   return (
     <>
       <div className="layout-wrapper">

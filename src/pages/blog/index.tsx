@@ -10,7 +10,8 @@ import { toTitleCase } from "@/utils/stringUtils";
 import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
 import apiUrl from "@/utils/apiConfig";
 import { calculateReadingTime } from "@/utils/readingTime";
-import ToggleSwitch from "@/components/ToggleSwitch";
+import ToggleSwitch from "@/components/Forms/ToggleSwitch";
+import SearchInput from "@/components/Forms/SearchInput";
 
 interface BlogProps {
   feed: any;
@@ -19,6 +20,9 @@ interface BlogProps {
 const Blog: React.FC<BlogProps> = (props) => {
   const [feed, setFeed] = useState(props.feed);
   const [sortByDateNewest, setSortByDateNewest] = useState<boolean>(true);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filteredFeed, setFilteredFeed] = useState<BlogType[]>([]);
+  const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
 
   useEffect(() => {
     sortFeed();
@@ -50,7 +54,9 @@ const Blog: React.FC<BlogProps> = (props) => {
   };
 
   const renderBlogList = () => {
-    return feed.map((blog: BlogType) => (
+    const blogsToRender = searchQuery ? filteredFeed : feed;
+
+    return blogsToRender.map((blog: BlogType) => (
       <div className="blog-item" key={blog.id} aria-label="blog-item">
         <Link
           className="blog-link"
@@ -88,16 +94,57 @@ const Blog: React.FC<BlogProps> = (props) => {
     ));
   };
 
+  const noResultsFound = {
+    ...notFoundBlog,
+    title: `No results found for "${searchQuery}"`,
+  };
+
+  const handleSearchChange = (query: string) => {
+    setSearchQuery(query);
+
+    let filtered = props.feed.filter((blog: BlogType) => {
+      const title = blog.title.toLowerCase();
+      return title.includes(query);
+    });
+
+    filtered = filtered.length > 0 ? filtered : [noResultsFound];
+
+    setFilteredFeed(filtered);
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery("");
+    setFilteredFeed([]);
+  };
+
+  const handleInputFocus = () => {
+    setIsInputFocused(true);
+  };
+
+  const handleInputBlur = () => {
+    setIsInputFocused(false);
+  };
+
   return (
     <div className="container text-center">
       <h1>Blog</h1>
-      <ToggleSwitch
-        sortFunction={setSortByDateNewest}
-        sortState={sortByDateNewest}
-        toggleTextOn="Newest"
-        toggleTextOff="Oldest"
-        ariaLabel="sort blog posts by date"
-      />
+      <div className="blog-controls">
+        <SearchInput
+          onSearchChange={handleSearchChange}
+          onClearSearch={handleClearSearch}
+          isFocused={isInputFocused}
+          searchQuery={searchQuery}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+        />
+        <ToggleSwitch
+          sortFunction={setSortByDateNewest}
+          sortState={sortByDateNewest}
+          toggleTextOn="Newest"
+          toggleTextOff="Oldest"
+          ariaLabel="sort blog posts by date"
+        />
+      </div>
       <div className="blog-list">{renderBlogList()}</div>
     </div>
   );
