@@ -11,8 +11,7 @@ import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
 import apiUrl from "@/utils/apiConfig";
 import { calculateReadingTime } from "@/utils/readingTime";
 import ToggleSwitch from "@/components/Forms/ToggleSwitch";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
+import SearchInput from "@/components/Forms/SearchInput";
 
 interface BlogProps {
   feed: any;
@@ -95,16 +94,27 @@ const Blog: React.FC<BlogProps> = (props) => {
     ));
   };
 
-  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const query = e.target.value.toLowerCase();
+  const noResultsFound = {
+    ...notFoundBlog,
+    title: `No results found for "${searchQuery}"`,
+  };
+
+  const handleSearchChange = (query: string) => {
     setSearchQuery(query);
 
-    const filtered = props.feed.filter((blog: BlogType) => {
+    let filtered = props.feed.filter((blog: BlogType) => {
       const title = blog.title.toLowerCase();
       return title.includes(query);
     });
 
+    filtered = filtered.length > 0 ? filtered : [noResultsFound];
+
     setFilteredFeed(filtered);
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery("");
+    setFilteredFeed([]);
   };
 
   const handleInputFocus = () => {
@@ -119,34 +129,14 @@ const Blog: React.FC<BlogProps> = (props) => {
     <div className="container text-center">
       <h1>Blog</h1>
       <div className="blog-controls">
-        <div className="search-wrapper">
-          <label htmlFor="searchInput">Search</label>
-          <div
-            className={`search-container ${isInputFocused ? "focused" : ""}`}
-          >
-            <input
-              type="text"
-              id="searchInput"
-              value={searchQuery}
-              onChange={handleSearchInputChange}
-              onFocus={handleInputFocus}
-              onBlur={handleInputBlur}
-            />
-            {searchQuery !== "" && (
-              <FontAwesomeIcon
-                icon={faXmarkCircle}
-                className="clear-search"
-                onClick={() => {
-                  setSearchQuery("");
-                  setFilteredFeed([]);
-                }}
-              />
-            )}
-            {!isInputFocused && searchQuery === "" && (
-              <FontAwesomeIcon icon={faSearch} className="search-icon" />
-            )}
-          </div>
-        </div>
+        <SearchInput
+          onSearchChange={handleSearchChange}
+          onClearSearch={handleClearSearch}
+          isFocused={isInputFocused}
+          searchQuery={searchQuery}
+          onFocus={handleInputFocus}
+          onBlur={handleInputBlur}
+        />
         <ToggleSwitch
           sortFunction={setSortByDateNewest}
           sortState={sortByDateNewest}
