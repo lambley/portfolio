@@ -11,6 +11,8 @@ import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
 import apiUrl from "@/utils/apiConfig";
 import { calculateReadingTime } from "@/utils/readingTime";
 import ToggleSwitch from "@/components/ToggleSwitch";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 
 interface BlogProps {
   feed: any;
@@ -19,6 +21,9 @@ interface BlogProps {
 const Blog: React.FC<BlogProps> = (props) => {
   const [feed, setFeed] = useState(props.feed);
   const [sortByDateNewest, setSortByDateNewest] = useState<boolean>(true);
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [filteredFeed, setFilteredFeed] = useState<BlogType[]>([]);
+  const [isInputFocused, setIsInputFocused] = useState<boolean>(false);
 
   useEffect(() => {
     sortFeed();
@@ -50,7 +55,9 @@ const Blog: React.FC<BlogProps> = (props) => {
   };
 
   const renderBlogList = () => {
-    return feed.map((blog: BlogType) => (
+    const blogsToRender = searchQuery ? filteredFeed : feed;
+
+    return blogsToRender.map((blog: BlogType) => (
       <div className="blog-item" key={blog.id} aria-label="blog-item">
         <Link
           className="blog-link"
@@ -88,16 +95,66 @@ const Blog: React.FC<BlogProps> = (props) => {
     ));
   };
 
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value.toLowerCase();
+    setSearchQuery(query);
+
+    const filtered = props.feed.filter((blog: BlogType) => {
+      const title = blog.title.toLowerCase();
+      return title.includes(query);
+    });
+
+    setFilteredFeed(filtered);
+  };
+
+  const handleInputFocus = () => {
+    setIsInputFocused(true);
+  };
+
+  const handleInputBlur = () => {
+    setIsInputFocused(false);
+  };
+
   return (
     <div className="container text-center">
       <h1>Blog</h1>
-      <ToggleSwitch
-        sortFunction={setSortByDateNewest}
-        sortState={sortByDateNewest}
-        toggleTextOn="Newest"
-        toggleTextOff="Oldest"
-        ariaLabel="sort blog posts by date"
-      />
+      <div className="blog-controls">
+        <div className="search-wrapper">
+          <label htmlFor="searchInput">Search</label>
+          <div
+            className={`search-container ${isInputFocused ? "focused" : ""}`}
+          >
+            <input
+              type="text"
+              id="searchInput"
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+              onFocus={handleInputFocus}
+              onBlur={handleInputBlur}
+            />
+            {searchQuery !== "" && (
+              <FontAwesomeIcon
+                icon={faXmarkCircle}
+                className="clear-search"
+                onClick={() => {
+                  setSearchQuery("");
+                  setFilteredFeed([]);
+                }}
+              />
+            )}
+            {!isInputFocused && searchQuery === "" && (
+              <FontAwesomeIcon icon={faSearch} className="search-icon" />
+            )}
+          </div>
+        </div>
+        <ToggleSwitch
+          sortFunction={setSortByDateNewest}
+          sortState={sortByDateNewest}
+          toggleTextOn="Newest"
+          toggleTextOff="Oldest"
+          ariaLabel="sort blog posts by date"
+        />
+      </div>
       <div className="blog-list">{renderBlogList()}</div>
     </div>
   );
