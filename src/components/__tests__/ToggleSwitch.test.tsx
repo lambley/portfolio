@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import ToggleSwitch from "../ToggleSwitch";
+import ToggleSwitch from "../Forms/ToggleSwitch";
 
 describe("ToggleSwitch", () => {
   const toggleSwitchProps = {

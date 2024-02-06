@@ -10,7 +10,7 @@ import { toTitleCase } from "@/utils/stringUtils";
 import { getCategoryColour, getCategoryIcon } from "@/utils/categoryColours";
 import apiUrl from "@/utils/apiConfig";
 import { calculateReadingTime } from "@/utils/readingTime";
-import ToggleSwitch from "@/components/ToggleSwitch";
+import ToggleSwitch from "@/components/Forms/ToggleSwitch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faXmarkCircle } from "@fortawesome/free-solid-svg-icons";
 
