@@ -11,7 +11,7 @@ import {
   getCategoryIcon,
 } from "@/utils/categoryColours";
 import apiUrl from "@/utils/apiConfig";
-import ToggleSwitch from "@/components/ToggleSwitch";
+import ToggleSwitch from "@/components/Forms/ToggleSwitch";
 
 interface PortfolioProps {
   feed: any;
