@@ -1,0 +1,42 @@
+.blog-controls {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.search-container {
+  position: relative;
+}
+
+.search-icon,
+.clear-search {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  color: var(--button-text-color);
+}
+
+.clear-search {
+  cursor: pointer;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  border: 1px solid #e0e0e0;
+  background-color: white;
+  transition: border-color 0.2s ease;
+}
+
+.focused .search-icon {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  #searchInput {
+    width: 100%;
+  }
+}
