@@ -28,7 +28,7 @@ const SearchInput: React.FC<SearchInputProps> = (props) => {
         <input
           type="text"
           id="searchInput"
-          value={searchQuery}
+          value={searchQuery.toLowerCase()}
           onChange={(e) => onSearchChange(e.target.value)}
           onFocus={() => {
             onFocus();
