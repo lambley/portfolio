@@ -72,7 +72,7 @@ const HomePage = (): JSX.Element => {
           <div className="download-wrapper my-3">
             <a
               className="download-cta"
-              href="https://drive.google.com/file/d/10sluVUfpXieszIOA87wpYo2d39DOmtNN/view?usp=sharing"
+              href="https://drive.google.com/file/d/18uMDpAD7nWM_BtzjBkhtoCITiPMTc70I/view?usp=sharing"
               onMouseOver={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
               target="blank"

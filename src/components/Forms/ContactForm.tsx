@@ -31,6 +31,7 @@ const ContactForm = () => {
   const [submitting, setSubmitting] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [recaptchaToken, setRecaptchaToken] = useState<string | null>(null);
+  const [submittedSuccessfully, setSubmittedSuccessfully] = useState(false);
 
   useEffect(() => {
     let timeoutId: NodeJS.Timeout | null = null;
@@ -71,6 +72,7 @@ const ContactForm = () => {
           .getElementById("confirmation-message")
           ?.style.setProperty("color", "green");
         reset();
+        setSubmittedSuccessfully(true);
       } else {
         setMessage(response.data.message);
       }
@@ -116,7 +118,7 @@ const ContactForm = () => {
                 placeholder="What's your name?"
                 {...register("name", { required: "Name is required" })}
               />
-              {errors.name && <p>{errors.name.message}</p>}
+              {errors.name && <p className="error">{errors.name.message}</p>}
             </Form.Group>
             <Form.Group controlId="email" className="mb-2">
               <Form.Label aria-label="email">Email:</Form.Label>
@@ -125,7 +127,7 @@ const ContactForm = () => {
                 placeholder="How can I reach you?"
                 {...register("email", { required: "Email is required" })}
               />
-              {errors.email && <p>{errors.email.message}</p>}
+              {errors.email && <p className="error">{errors.email.message}</p>}
             </Form.Group>
             <Form.Group controlId="message" className="mb-2">
               <Form.Label aria-label="message">Message:</Form.Label>
@@ -135,7 +137,7 @@ const ContactForm = () => {
                 rows={3}
                 {...register("message", { required: "Message is required" })}
               />
-              {errors.message && <p>{errors.message.message}</p>}
+              {errors.message && <p className="error">{errors.message.message}</p>}
             </Form.Group>
             {process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY && (
               <Form.Group className="my-3">
@@ -147,8 +149,8 @@ const ContactForm = () => {
                 />
               </Form.Group>
             )}
-            <Button variant="primary" type="submit">
-              {submitting ? "Submitting..." : "Send Message"}
+            <Button variant="primary" type="submit" disabled={submittedSuccessfully}>
+              {submitting ? "Submitting..." : submittedSuccessfully ? "S" : "Send Message"}
             </Button>
             <div style={{ height: "1rem" }}>
               <p
