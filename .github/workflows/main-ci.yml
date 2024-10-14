@@ -88,11 +88,6 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Start application
-        run: npm run test:e2e
-        env:
-          CI: true
-
       - name: Run Playwright tests
         run: npx playwright test --config=__tests__/e2e/playwright.config.ts
 
