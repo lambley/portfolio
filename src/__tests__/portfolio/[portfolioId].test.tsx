@@ -4,7 +4,7 @@ import { mockPortfolioUseRouter } from "@utils/tests/mocks/mockUseRouter";
 import PortfolioItem, {
   getStaticPaths,
   getStaticProps,
-} from "../[portfolioId]";
+} from "../../pages/portfolio/[portfolioId]";
 import { mockPortfolio } from "@/utils/constants/mockPortfolio";
 import { notFoundPortfolio } from "@/utils/constants/notFoundTypes";
 import { GetStaticPathsContext } from "next";
