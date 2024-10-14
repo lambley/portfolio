@@ -1,5 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "../pages/homePage";
+import { checkElementsContainTexts } from "../helpers/elementHelpers";
 
 test.describe("Home Page", () => {
   let homePage: HomePage;
@@ -43,12 +44,6 @@ test.describe("Home Page", () => {
       "Currently learning NestJS framework and using Redis and Docker.",
     ];
 
-    const count = await bioTexts.count();
-    expect(count).toBe(expectedTexts.length);
-
-    for (let i = 0; i < count; i++) {
-      const bioText = bioTexts.nth(i);
-      await expect(bioText).toContainText(expectedTexts[i]);
-    }
+    await checkElementsContainTexts(bioTexts, expectedTexts);
   });
 });
