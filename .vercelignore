@@ -4,3 +4,4 @@
 **/*.test.jsx
 **/setupTest.ts
 **/*.md
+e2e

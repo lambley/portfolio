@@ -42,3 +42,13 @@ fi
 ### Environments
 - Preview - dynamic link generated via Vercel for each commit
 - Production - https://www.agslambley.dev
+
+### Playwright feature tests
+
+`e2e` folder contains test files for [playwright](https://playwright.dev/) feature tests
+
+The folder structure:
+- `e2e/specs/`: feature test files
+- `e2e/pages/`: files for Page Objects (POM) pattern
+- `e2e/fixtures/`: test data and mocks
+- `e2e/helpers/`: reusuable functions
