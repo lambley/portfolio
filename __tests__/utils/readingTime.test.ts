@@ -1,4 +1,4 @@
-import { calculateReadingTime } from "../readingTime";
+import { calculateReadingTime } from "../../src/utils/readingTime";
 
 describe("calculateReadingTime", () => {
   it("should return 1 min read for 200 words", () => {

@@ -1,31 +1,34 @@
-const config = {
+module.exports = {
   verbose: true,
-  preset: "ts-jest",
   testEnvironment: "jsdom",
-  setupFilesAfterEnv: ["<rootDir>/src/setupTests.ts"],
+  setupFilesAfterEnv: ["<rootDir>/setupTests.ts"],
   transform: {
     "^.+\\.ts?$": [
       "ts-jest",
       {
         babel: true,
-        tsConfig: "<rootDir>/tsconfig.jest.json",
+        tsConfig: "<rootDir>/tsconfig.json",
       },
     ],
     "^.+\\.tsx?$": [
       "ts-jest",
       {
         babel: true,
-        tsConfig: "<rootDir>/tsconfig.jest.json",
+        tsConfig: "<rootDir>/tsconfig.json",
       },
     ],
     "^.+\\.js?$": "babel-jest",
     "^.+\\.jsx?$": "babel-jest",
+    "^.+.tsx?$": ["ts-jest", {}],
   },
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@utils/(.*)$": "<rootDir>/src/utils/$1",
-    "^react-markdown$": "<rootDir>/src/utils/tests/mocks/mockReactMarkdown.tsx",
+    "^react-markdown$": "<rootDir>/__tests__/utils/mocks/mockReactMarkdown.tsx",
   },
+  testPathIgnorePatterns: [
+    "<rootDir>/e2e/",
+    "<rootDir>/__tests__/utils/mocks/",
+    ".*\\.mock\\.(js|jsx|ts|tsx)$",
+  ],
 };
-
-module.exports = config;

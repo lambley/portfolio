@@ -1,6 +1,6 @@
 import React from "react";
 import { render, screen, waitFor } from "@testing-library/react";
-import Typewriter from "../Typewriter";
+import Typewriter from "../../src/components/Typewriter";
 
 describe("Typewriter", () => {
   it("renders initial text", async () => {
