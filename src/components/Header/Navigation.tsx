@@ -19,9 +19,10 @@ const Navigation: React.FC<NavigationProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY >= 60) {
+      const isScrolled = window.scrollY >= 60;
+      if (isScrolled && !scrolled) {
         setScrolled(true);
-      } else {
+      } else if (!isScrolled && scrolled) {
         setScrolled(false);
       }
     };
@@ -31,7 +32,7 @@ const Navigation: React.FC<NavigationProps> = ({
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [scrolled]);
 
   const backToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
