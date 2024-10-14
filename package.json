@@ -10,7 +10,8 @@
     "test": "jest --verbose",
     "test:coverage": "jest --coverage --verbose",
     "test:watch": "jest --watch --verbose",
-    "test:e2e": "npx playwright test"
+    "test:e2e": "npx playwright test __tests__/e2e/ --config=__tests__/e2e/playwright.config.ts",
+    "test:e2e:ui": "npx playwright test __tests__/e2e/ --config=__tests__/e2e/playwright.config.ts --ui"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
