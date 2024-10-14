@@ -7,14 +7,14 @@ module.exports = {
       "ts-jest",
       {
         babel: true,
-        tsConfig: "<rootDir>/tsconfig.json",
+        tsconfig: "./tsconfig.jest.json",
       },
     ],
     "^.+\\.tsx?$": [
       "ts-jest",
       {
         babel: true,
-        tsConfig: "<rootDir>/tsconfig.json",
+        tsconfig: "./tsconfig.jest.json",
       },
     ],
     "^.+\\.js?$": "babel-jest",
@@ -24,7 +24,8 @@ module.exports = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@utils/(.*)$": "<rootDir>/src/utils/$1",
-    "^react-markdown$": "<rootDir>/__tests__/jest/utils/mocks/mockReactMarkdown.tsx",
+    "^react-markdown$":
+      "<rootDir>/__tests__/jest/utils/mocks/mockReactMarkdown.tsx",
   },
   testPathIgnorePatterns: [
     "<rootDir>/__tests__/e2e/",
