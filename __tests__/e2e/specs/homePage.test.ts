@@ -1,4 +1,5 @@
 import { test, expect } from "@playwright/test";
+import { HomePageSelectors } from "../selectors/homePage";
 
 test.describe("Home Page", () => {
   test.beforeEach(async ({ page }) => {
@@ -6,27 +7,27 @@ test.describe("Home Page", () => {
   });
 
   test("should display the correct headline", async ({ page }) => {
-    await page.waitForLoadState('networkidle')
-    const headline = page.locator("h3");
+    await page.waitForLoadState("networkidle");
+    const headline = page.locator(HomePageSelectors.headline);
     await expect(headline).toHaveText(
       "Fullstack Developer 💻 | Web-Dev Enthusiast 🌐 | Bookworm 📚 | Dog Lover 🐶"
     );
   });
 
   test("should show the Typewriter component", async ({ page }) => {
-    const typewriter = page.locator(".text-center.fs-1.fw-bold.mb-5");
+    const typewriter = page.locator(HomePageSelectors.typewriter);
     await expect(typewriter).toBeVisible();
   });
 
   test("should show the avatar image", async ({ page }) => {
-    const avatar = page.locator("img.round-avatar");
+    const avatar = page.locator(HomePageSelectors.avatar);
     await expect(avatar).toBeVisible();
     const srcValue = await avatar.getAttribute("src");
     expect(srcValue).toContain("aaron.png");
   });
 
   test("should display the download CV link", async ({ page }) => {
-    const downloadLink = page.locator("a.download-cta");
+    const downloadLink = page.locator(HomePageSelectors.downloadLink);
     await expect(downloadLink).toBeVisible();
     await expect(downloadLink).toHaveText("Download my CV");
     await expect(downloadLink).toHaveAttribute(
@@ -36,7 +37,7 @@ test.describe("Home Page", () => {
   });
 
   test("should display correct bio information", async ({ page }) => {
-    const bioTexts = page.locator("p.text-center");
+    const bioTexts = page.locator(HomePageSelectors.bioTexts);
     const expectedTexts = [
       "Experienced Ruby on Rails and JavaScript developer skilled in startup and technical consultancy settings, and well-practiced at working within agile methodology environments. Passionate about learning and advancing my skills in fullstack development and DevOps.",
       "Formerly, specialized in non-fiction publishing with a focus on physical and digital sales, including ecommerce and data analytics.",
