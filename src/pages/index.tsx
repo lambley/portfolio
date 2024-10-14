@@ -12,16 +12,17 @@ const HomePage = (): JSX.Element => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("resize", handleResize);
-  });
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 720);
+    };
 
-  const handleResize = () => {
-    if (window.innerWidth < 720) {
-      setIsMobile(true);
-    } else {
-      setIsMobile(false);
-    }
-  };
+    window.addEventListener("resize", handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const renderHeadline = (): JSX.Element => {
     if (isMobile) {
@@ -75,9 +76,10 @@ const HomePage = (): JSX.Element => {
               href="https://drive.google.com/file/d/15az5jAl01qd-3bCD3o2CqrL090N0n7gR/view?usp=sharing"
               onMouseOver={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
-              target="blank"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              Download my cv{" "}
+              Download my CV{" "}
               <FontAwesomeIcon icon={faFile} bounce={isHovered} />
             </a>
           </div>

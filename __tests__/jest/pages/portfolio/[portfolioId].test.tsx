@@ -1,10 +1,10 @@
 import React from "react";
 import { fireEvent, render, screen } from "@testing-library/react";
-import { mockPortfolioUseRouter } from "@utils/tests/mocks/mockUseRouter";
+import { mockPortfolioUseRouter } from "../../utils/mocks/mockUseRouter";
 import PortfolioItem, {
   getStaticPaths,
   getStaticProps,
-} from "../[portfolioId]";
+} from "@/pages/portfolio/[portfolioId]";
 import { mockPortfolio } from "@/utils/constants/mockPortfolio";
 import { notFoundPortfolio } from "@/utils/constants/notFoundTypes";
 import { GetStaticPathsContext } from "next";

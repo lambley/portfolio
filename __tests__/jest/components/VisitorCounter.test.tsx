@@ -1,6 +1,6 @@
 import React from "react";
 import { act, render, screen, waitFor } from "@testing-library/react";
-import VisitorCounter from "../Footer/VisitorCounter";
+import VisitorCounter from "@/components/Footer/VisitorCounter";
 import * as visitorCountApi from "@/api/visitorCount";
 
 jest.mock("@/api/visitorCount");

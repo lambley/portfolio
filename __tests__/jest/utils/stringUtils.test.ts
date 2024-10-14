@@ -1,4 +1,4 @@
-import { toSentenceCase, toTitleCase } from "../stringUtils";
+import { toSentenceCase, toTitleCase } from "@/utils/stringUtils";
 
 describe("String Utility Functions", () => {
   describe("toSentenceCase", () => {

@@ -1,7 +1,6 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
-import Navigation from "../Header/Navigation";
-import { type } from "os";
+import Navigation from "@/components/Header/Navigation";
 
 const NavigationProps = {
   theme: "light",
