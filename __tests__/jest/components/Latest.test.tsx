@@ -1,9 +1,8 @@
 import React from "react";
-import Latest from "../../src/components/Latest";
+import Latest from "../../../src/components/Latest";
 import { render, waitFor, screen } from "@testing-library/react";
 import { mockPortfolio, mockBlog } from "@/utils/constants/mockPortfolio";
 import axios from "axios";
-import { mock } from "node:test";
 
 jest.mock("axios");
 

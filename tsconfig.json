@@ -30,7 +30,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "__tests__/components/Typewriter.test.tsx",
+    "__tests__/jest/components/Typewriter.test.tsx",
     "env.local",
     "env.development",
     "env.production",

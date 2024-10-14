@@ -24,11 +24,11 @@ module.exports = {
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
     "^@utils/(.*)$": "<rootDir>/src/utils/$1",
-    "^react-markdown$": "<rootDir>/__tests__/utils/mocks/mockReactMarkdown.tsx",
+    "^react-markdown$": "<rootDir>/__tests__/jest/utils/mocks/mockReactMarkdown.tsx",
   },
   testPathIgnorePatterns: [
-    "<rootDir>/e2e/",
-    "<rootDir>/__tests__/utils/mocks/",
+    "<rootDir>/__tests__/e2e/",
+    "<rootDir>/__tests__/jest/utils/mocks/",
     ".*\\.mock\\.(js|jsx|ts|tsx)$",
   ],
 };

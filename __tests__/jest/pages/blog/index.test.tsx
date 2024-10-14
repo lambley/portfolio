@@ -2,10 +2,10 @@ import React from "react";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 import { render, screen } from "@testing-library/react";
-import Blog, { getStaticProps } from "../../src/pages/blog/index";
+import Blog, { getStaticProps } from "@/pages/blog/index";
 import { mockBlog, mockBlogList } from "@/utils/constants/mockPortfolio";
 import apiUrl from "@/utils/apiConfig";
-import { BlogType } from "../../custom";
+import { BlogType } from "../../../../custom";
 
 describe("Blog", () => {
   const mockFeed = mockBlogList;

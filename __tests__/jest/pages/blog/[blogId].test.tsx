@@ -1,10 +1,10 @@
 import React from "react";
 import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { mockPortfolioUseRouter } from "../utils/mocks/mockUseRouter";
+import { mockPortfolioUseRouter } from "../../utils/mocks/mockUseRouter";
 import BlogItem, {
   getStaticPaths,
   getStaticProps,
-} from "../../src/pages/blog/[blogId]";
+} from "@/pages/blog/[blogId]";
 import { notFoundBlog } from "@/utils/constants/notFoundTypes";
 import { mockBlog } from "@/utils/constants/mockPortfolio";
 import { GetStaticPathsContext } from "next";
