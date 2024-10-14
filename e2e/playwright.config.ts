@@ -1,7 +1,13 @@
 import { defineConfig } from "@playwright/test";
 
+const testUrl = process.env.TEST_URL || 'http://127.0.0.1:3000'
+
 export default defineConfig({
   testDir: "./specs",
+  fullyParallel: true,
+  forbidOnly: !!process.env.CI,
+  retries: process.env.CI ? 2 : 0,
+  workers: process.env.CI ? 1 : undefined,
   timeout: 30 * 1000,
   expect: {
     timeout: 5000,
@@ -28,4 +34,9 @@ export default defineConfig({
     },
   ],
   reporter: [["list"], ["html", { open: "never" }]],
+  webServer: {
+    command: 'npm run dev',
+    url: testUrl,
+    reuseExistingServer: !process.env.CI
+  },
 });
