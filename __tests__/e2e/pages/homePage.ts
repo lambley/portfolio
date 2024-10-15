@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Page, Download } from "@playwright/test";
 import { HomePageSelectors } from "../selectors/homePageSelectors";
 
 export class HomePage {
@@ -15,6 +15,14 @@ export class HomePage {
 
   async waitForLoad() {
     await this.page.waitForLoadState("networkidle");
+  }
+
+  async clickDownloadCV() {
+    await this.page.locator(HomePageSelectors.downloadLink).click();
+  }
+
+  async getDownloadLinkTarget() {
+    return await this.downloadLink.getAttribute("target");
   }
 
   // elements

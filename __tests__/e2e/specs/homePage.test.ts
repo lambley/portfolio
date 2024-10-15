@@ -36,6 +36,11 @@ test.describe("Home Page", () => {
     );
   });
 
+  test("should open the CV download link in a new tab", async () => {
+    const target = await homePage.getDownloadLinkTarget();
+    expect(target).toBe("_blank");
+  });
+
   test("should display correct bio information", async () => {
     const bioTexts = homePage.bioTexts;
     const expectedTexts = [
