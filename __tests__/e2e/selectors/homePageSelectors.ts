@@ -4,4 +4,7 @@ export const HomePageSelectors = {
   avatar: "img.round-avatar",
   downloadLink: "a.download-cta",
   bioTexts: "p.text-center",
+  contactForm: 'form[aria-label="contact-form"]',
+  latest: '[aria-label="latest-posts"]',
+  latestLinks: '[aria-label="latest-posts"] .latest-link',
 };

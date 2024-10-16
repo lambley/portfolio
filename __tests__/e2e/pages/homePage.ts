@@ -1,4 +1,4 @@
-import { Page } from "@playwright/test";
+import { Page, Download } from "@playwright/test";
 import { HomePageSelectors } from "../selectors/homePageSelectors";
 
 export class HomePage {
@@ -15,6 +15,14 @@ export class HomePage {
 
   async waitForLoad() {
     await this.page.waitForLoadState("networkidle");
+  }
+
+  async clickDownloadCV() {
+    await this.page.locator(HomePageSelectors.downloadLink).click();
+  }
+
+  async getDownloadLinkTarget() {
+    return await this.downloadLink.getAttribute("target");
   }
 
   // elements
@@ -36,5 +44,17 @@ export class HomePage {
 
   get bioTexts() {
     return this.page.locator(HomePageSelectors.bioTexts);
+  }
+
+  get contactForm() {
+    return this.page.locator(HomePageSelectors.contactForm);
+  }
+
+  get latestComponent() {
+    return this.page.locator(HomePageSelectors.latest);
+  }
+
+  get latestItemLinks() {
+    return this.page.locator(HomePageSelectors.latestLinks);
   }
 }

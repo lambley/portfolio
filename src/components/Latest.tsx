@@ -104,7 +104,7 @@ const Latest = () => {
   };
 
   return (
-    <div className="my-5">
+    <div className="my-5" aria-label="latest-posts">
       <Row className="g-5">
         {renderBlog()}
         {renderPortfolio()}
