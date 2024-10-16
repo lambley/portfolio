@@ -110,7 +110,7 @@ const ContactForm = () => {
           />
         </Col>
         <Col xs={12} md={6} className="mb-3">
-          <Form onSubmit={handleSubmit(onSubmit)}>
+          <Form onSubmit={handleSubmit(onSubmit)} aria-label="contact-form">
             <Form.Group controlId="name" className="mb-2">
               <Form.Label aria-label="name">Name:</Form.Label>
               <Form.Control

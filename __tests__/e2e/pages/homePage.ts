@@ -45,4 +45,16 @@ export class HomePage {
   get bioTexts() {
     return this.page.locator(HomePageSelectors.bioTexts);
   }
+
+  get contactForm() {
+    return this.page.locator(HomePageSelectors.contactForm);
+  }
+
+  get latestComponent() {
+    return this.page.locator(HomePageSelectors.latest);
+  }
+
+  get latestItemLinks() {
+    return this.page.locator(HomePageSelectors.latestLinks);
+  }
 }

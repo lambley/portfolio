@@ -57,4 +57,17 @@ test.describe("Home Page", () => {
       await checkElementsContainTexts(bioTexts, expectedTexts);
     });
   });
+
+  test("should display the Contact Form", async () => {
+    await expect(homePage.contactForm).toBeVisible();
+  });
+
+  test("should display the Latest component", async () => {
+    await expect(homePage.latestComponent).toBeVisible();
+  });
+
+  test("should show two elements in the Latest component", async () => {
+    const latestItems = homePage.latestItemLinks;
+    await expect(latestItems).toHaveCount(2);
+  });
 });
