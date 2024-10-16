@@ -1,12 +1,28 @@
 import { test, expect } from "@playwright/test";
 import { HomePage } from "../pages/homePage";
 import { checkElementsContainTexts } from "../helpers/elementHelpers";
-
+import {
+  notFoundPortfolio,
+  notFoundBlog,
+} from "@/utils/constants/notFoundTypes";
 test.describe("Home Page", () => {
   let homePage: HomePage;
 
   test.beforeEach(async ({ page }) => {
     homePage = new HomePage(page);
+
+    // mock latest_data api endpoint
+    await page.route("**/api/v1/latest_data", async (route) => {
+      const mockResponse = {
+        latestPortfolio: notFoundPortfolio,
+        latestBlog: notFoundBlog,
+      };
+      route.fulfill({
+        contentType: "application/json",
+        body: JSON.stringify(mockResponse),
+      });
+    });
+
     await homePage.goto();
   });
 
