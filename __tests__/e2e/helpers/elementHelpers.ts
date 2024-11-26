@@ -1,4 +1,9 @@
-import { Locator, expect } from "@playwright/test";
+import { Page, Locator, expect } from "@playwright/test";
+import {
+  HomePageSelectors,
+  BlogPageSelectors,
+  PortfolioPageSelectors,
+} from "../selectors/pageSelectors";
 
 export async function checkElementsContainTexts(
   elements: Locator,
@@ -11,4 +16,33 @@ export async function checkElementsContainTexts(
     const element = elements.nth(i);
     await expect(element).toHaveText(expectedTexts[i]);
   }
+}
+
+function getLocator<T extends Record<string, any>>(
+  page: Page,
+  selectors: T,
+  key: keyof T
+) {
+  return page.locator(selectors[key as string]);
+}
+
+export function getHomePageLocator(
+  page: Page,
+  key: keyof typeof HomePageSelectors
+) {
+  return getLocator(page, HomePageSelectors, key);
+}
+
+export function getBlogPageLocator(
+  page: Page,
+  key: keyof typeof BlogPageSelectors
+) {
+  return getLocator(page, BlogPageSelectors, key);
+}
+
+export function getPortfolioPageLocator(
+  page: Page,
+  key: keyof typeof PortfolioPageSelectors
+) {
+  return getLocator(page, PortfolioPageSelectors, key);
 }
