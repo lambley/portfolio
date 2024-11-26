@@ -9,6 +9,13 @@ export const HomePageSelectors = {
   latestLinks: '[aria-label="latest-posts"] .latest-link',
 };
 
-export const BlogPageSelectors = {};
+export const BlogPageSelectors = {
+  searchWrapper: ".search-wrapper",
+  searchInput: "#searchInput",
+  searchIcon: ".svg-inline--fa.fa-magnifying-glass.search-icon",
+  toggleSwitch: "#toggleSwitch",
+  blogList: ".blog-list",
+  blogItem: ".blog-item",
+};
 
 export const PortfolioPageSelectors = {};
