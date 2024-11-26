@@ -8,3 +8,7 @@ export const HomePageSelectors = {
   latest: '[aria-label="latest-posts"]',
   latestLinks: '[aria-label="latest-posts"] .latest-link',
 };
+
+export const BlogPageSelectors = {};
+
+export const PortfolioPageSelectors = {};

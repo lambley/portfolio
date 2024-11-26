@@ -23,7 +23,7 @@ test.describe("Home Page", () => {
       });
     });
 
-    await homePage.goto();
+    await homePage.navigateToHome();
   });
 
   test.describe("Header", () => {

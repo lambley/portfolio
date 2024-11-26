@@ -1,5 +1,7 @@
-import { Page, Download } from "@playwright/test";
+import { Page, Locator } from "@playwright/test";
 import { HomePageSelectors } from "../selectors/homePageSelectors";
+import { pages } from "../shared/constants";
+import { getHomePageLocator } from "../helpers/elementHelpers";
 
 export class HomePage {
   private page: Page;
@@ -8,53 +10,67 @@ export class HomePage {
     this.page = page;
   }
 
+  // Elements
+  private getLocator(selector: keyof typeof HomePageSelectors): Locator {
+    return getHomePageLocator(this.page, selector);
+  }
+
+  get headline(): Locator {
+    return this.getLocator("headline");
+  }
+
+  get typewriter(): Locator {
+    return this.getLocator("typewriter");
+  }
+
+  get avatar(): Locator {
+    return this.getLocator("avatar");
+  }
+
+  get downloadLink(): Locator {
+    return this.getLocator("downloadLink");
+  }
+
+  get bioTexts(): Locator {
+    return this.getLocator("bioTexts");
+  }
+
+  get contactForm(): Locator {
+    return this.getLocator("contactForm");
+  }
+
+  get latestComponent(): Locator {
+    return this.getLocator("latest");
+  }
+
+  get latestItemLinks(): Locator {
+    return this.getLocator("latestLinks");
+  }
+
   // methods
-  async goto() {
+  async navigateToHome(): Promise<void> {
     await this.page.goto("http://localhost:3000");
   }
 
-  async waitForLoad() {
+  async navigateTo(page: pages): Promise<void> {
+    if (page === pages.home) {
+      await this.navigateToHome();
+      return;
+    }
+    await this.page.goto(`http://localhost:3000/${page}`);
+  }
+
+  async waitForLoad(): Promise<void> {
     await this.page.waitForLoadState("networkidle");
   }
 
-  async clickDownloadCV() {
+  async clickDownloadCV(): Promise<void> {
     await this.page.locator(HomePageSelectors.downloadLink).click();
   }
 
-  async getDownloadLinkTarget() {
-    return await this.downloadLink.getAttribute("target");
-  }
-
-  // elements
-  get headline() {
-    return this.page.locator(HomePageSelectors.headline);
-  }
-
-  get typewriter() {
-    return this.page.locator(HomePageSelectors.typewriter);
-  }
-
-  get avatar() {
-    return this.page.locator(HomePageSelectors.avatar);
-  }
-
-  get downloadLink() {
-    return this.page.locator(HomePageSelectors.downloadLink);
-  }
-
-  get bioTexts() {
-    return this.page.locator(HomePageSelectors.bioTexts);
-  }
-
-  get contactForm() {
-    return this.page.locator(HomePageSelectors.contactForm);
-  }
-
-  get latestComponent() {
-    return this.page.locator(HomePageSelectors.latest);
-  }
-
-  get latestItemLinks() {
-    return this.page.locator(HomePageSelectors.latestLinks);
+  async getDownloadLinkTarget(): Promise<string | null> {
+    return await this.page
+      .locator(HomePageSelectors.downloadLink)
+      .getAttribute("target");
   }
 }
