@@ -1,5 +1,5 @@
 import { Page, Locator } from "@playwright/test";
-import { HomePageSelectors } from "../selectors/homePageSelectors";
+import { HomePageSelectors } from "../selectors/pageSelectors";
 import { pages } from "../shared/constants";
 import { getHomePageLocator } from "../helpers/elementHelpers";
 

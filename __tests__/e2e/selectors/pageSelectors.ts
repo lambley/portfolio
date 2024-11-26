@@ -13,7 +13,7 @@ export const BlogPageSelectors = {
   searchWrapper: ".search-wrapper",
   searchInput: "#searchInput",
   searchIcon: ".svg-inline--fa.fa-magnifying-glass.search-icon",
-  toggleSwitch: "#toggleSwitch",
+  toggleSwitch: "#toggle-switch",
   blogList: ".blog-list",
   blogItem: ".blog-item",
 };

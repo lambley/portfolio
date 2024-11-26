@@ -3,7 +3,7 @@ import {
   HomePageSelectors,
   BlogPageSelectors,
   PortfolioPageSelectors,
-} from "../selectors/homePageSelectors";
+} from "../selectors/pageSelectors";
 
 export async function checkElementsContainTexts(
   elements: Locator,
