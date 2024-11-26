@@ -41,8 +41,25 @@ test.describe("Blog Page", () => {
       await expect(blogPage.searchIcon).not.toBeVisible();
     });
 
-    test("should have a 'new' toggle switch", async () => {});
+    test("should have a 'newest' toggle switch", async () => {
+      await expect(blogPage.toggleSwitch).toBeVisible();
+    });
+
+    test("toggle should contain text 'newest'", async () => {
+      const text = blogPage.toggleSwitch;
+      const expectedText = "Newest";
+      await checkElementsContainTexts(text, [expectedText]);
+    });
   });
 
-  test.describe("Blog List", () => {});
+  test.describe("Blog List", () => {
+    test("should display a blog list", async () => {
+      await expect(blogPage.blogList).toBeVisible();
+    });
+
+    test("should contain blog items", async () => {
+      const blogItems = await blogPage.blogItem.count();
+      expect(blogItems).toBeGreaterThan(0);
+    });
+  });
 });

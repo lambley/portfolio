@@ -35,6 +35,10 @@ export class BlogPage {
     return this.getLocator("blogList");
   }
 
+  get blogItem(): Locator {
+    return this.getLocator("blogItem");
+  }
+
   // methods
   async navigateToHome(): Promise<void> {
     await this.page.goto("http://localhost:3000");
@@ -50,5 +54,9 @@ export class BlogPage {
 
   async waitForLoad(): Promise<void> {
     await this.page.waitForLoadState("networkidle");
+  }
+
+  async countBlogItems(): Promise<number> {
+    return await this.blogItem.count();
   }
 }
