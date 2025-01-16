@@ -16,6 +16,11 @@ const Navigation: React.FC<NavigationProps> = ({
   children,
 }: NavigationProps) => {
   const [scrolled, setScrolled] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +41,12 @@ const Navigation: React.FC<NavigationProps> = ({
 
   const backToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const renderThemeToggle = () => {
+    if (isMounted && process.env.NEXT_PUBLIC_ENABLE_THEME_TOGGLE) {
+      return <ThemeToggle theme={theme} onToggle={onToggle} />;
+    }
   };
 
   return (
@@ -61,7 +72,7 @@ const Navigation: React.FC<NavigationProps> = ({
           <Link className="navbar-link navbar-link-hover" href="/portfolio">
             Portfolio
           </Link>
-          <ThemeToggle theme={theme} onToggle={onToggle} />
+          {renderThemeToggle()}
         </div>
       </div>
       {children}
