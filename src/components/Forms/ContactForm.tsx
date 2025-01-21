@@ -150,7 +150,7 @@ const ContactForm = () => {
               </Form.Group>
             )}
             <Button variant="primary" type="submit" disabled={submittedSuccessfully}>
-              {submitting ? "Submitting..." : submittedSuccessfully ? "S" : "Send Message"}
+              {submitting ? "Submitting..." : submittedSuccessfully ? "Message Sent!" : "Send Message"}
             </Button>
             <div style={{ height: "1rem" }}>
               <p
